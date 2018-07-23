@@ -1,23 +1,28 @@
 package com.crealytics.service
 
-import java.sql.{ResultSet, SQLException}
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 
-import com.crealytics.DBConnector._
-import com.crealytics.exasol._
 import com.crealytics.common.ServiceHelpers._
+import com.crealytics.models._
 
 
-case class UsersService(query: String) extends ExasolDelegator(conn) {
-  val rs: Future[ResultSet] = exa.executeQuery(query)
-  val rsl: Future[List[Map[String, String]]] = rs.map(queryToList(_))
-  val fcols: Future[Iterable[String]] = rsl.map(_.head.keys)
-  val users: Future[List[Option[UserService]]] = rsl.map { x =>
+case class UserService(query: String) extends EntityService(query) {
+
+  private val users: Future[List[Option[User]]] = rsl.map { x =>
     val cols = x.head.keys
-    x.map(m => listToCaseClass[UserService](rowMapToList(m, cols)))
+    val t = x.map(m => listToCaseClass[User](rowMapToList(m, cols)))
+    t
   }
 
-}
+  def getUsers: Future[List[Option[User]]] = users
 
-case class UserService(id: Int, name: String, birthDate: String)
+  def getUser(uId: Int): Future[Option[User]] = {
+    users.map{ ul =>
+      ul.filter( optU => optU match {
+        case Some(x) => x.id == uId
+        case None => false
+      }).head
+    }
+  }
+}

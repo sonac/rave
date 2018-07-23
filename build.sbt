@@ -15,7 +15,7 @@ lazy val root = (project in file("."))
   ),
     parallelExecution in Test := false,
     libraryDependencies ++= coreDeps,
-    mainClass in assembly := Some("Main"),
+    mainClass in assembly := Some("com.crealytics.Server"),
     assemblyJarName in assembly := s"${name.value}.jar",
     test in assembly := {}
   )
