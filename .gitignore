@@ -6,6 +6,8 @@
 [._]s[a-v][a-z]
 [._]sw[a-p]
 
+node_modules/
+
 # Session
 Session.vim
 
@@ -73,3 +75,4 @@ build
 .scala_dependencies
 .cache
 .cache-main
+node_modules/
