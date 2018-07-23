@@ -15,7 +15,8 @@ lazy val root = (project in file("."))
   ),
     parallelExecution in Test := false,
     libraryDependencies ++= coreDeps,
-    mainClass in assembly := Some("com.crealytics.Server"),
+    mainClass in compile := Some("com.crealytics.Server"),
     assemblyJarName in assembly := s"${name.value}.jar",
-    test in assembly := {}
+    test in assembly := {},
+    unmanagedSourceDirectories in Compile += baseDirectory.value / "server" / "src" / "main" / "scala"
   )
