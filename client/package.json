@@ -3,11 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "awesome-typescript-loader": "^5.2.0",
     "babel-loader": "^7.1.5",
     "babel-root-slash-import": "^1.1.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-scripts": "0.9.x"
+    "react-scripts": "0.9.x",
+    "source-map-loader": "^0.2.3",
+    "ts-loader": "^4.4.2",
+    "typescript": "^2.9.2"
   },
   "devDependencies": {
     "webpack": "^4.16.2",
@@ -15,7 +19,7 @@
     "webpack-dev-server": "^3.1.5"
   },
   "scripts": {
-    "watch": "webpack --watch",
+    "watch": "webpack --watch-poll --watch --mode=development",
     "build": "webpack",
     "start": "webpack-dev-server"
   }

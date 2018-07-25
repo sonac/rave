@@ -18,5 +18,6 @@ lazy val root = (project in file("."))
     mainClass in compile := Some("com.crealytics.Server"),
     assemblyJarName in assembly := s"${name.value}.jar",
     test in assembly := {},
-    unmanagedSourceDirectories in Compile += baseDirectory.value / "server" / "src" / "main" / "scala"
+    unmanagedSourceDirectories in Compile += baseDirectory.value / "server" / "src" / "main" / "scala",
+    unmanagedClasspath in Runtime += baseDirectory.value
   )

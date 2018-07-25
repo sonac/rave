@@ -1,8 +1,6 @@
 package com.crealytics
 
-import Server.{executeGraphQL, formatError, route, system}
 import sangria.ast.Document
-import sangria.execution.deferred.DeferredResolver
 import sangria.execution.{ErrorWithResolver, Executor, QueryAnalysisError}
 import sangria.parser.{QueryParser, SyntaxError}
 import sangria.parser.DeliveryScheme.Try
@@ -24,7 +22,7 @@ import scala.util.{Failure, Success}
 import com.crealytics.common.GraphQLRequestUnmarshaller._
 import com.crealytics.models.{ExaRepo, SchemaDefinition}
 
-import scala.concurrent.ExecutionContextExecutor
+import scala.io.StdIn
 
 object Server extends App {
 
@@ -38,11 +36,11 @@ object Server extends App {
     complete(Executor.execute(SchemaDefinition.ExaSchema, query, new ExaRepo,
       variables = if (variables.isNull) Json.obj() else variables,
       operationName = operationName)
-    .map(OK -> _)
-    .recover {
-      case error: QueryAnalysisError => BadRequest -> error.resolveError
-      case error: ErrorWithResolver => InternalServerError -> error.resolveError
-    })
+      .map(OK -> _)
+      .recover {
+        case error: QueryAnalysisError => BadRequest -> error.resolveError
+        case error: ErrorWithResolver => InternalServerError -> error.resolveError
+      })
   }
 
   def formatError(error: Throwable): Json = error match {
@@ -67,7 +65,7 @@ object Server extends App {
     path("graphql") {
       get {
         explicitlyAccepts(`text/html`) {
-          getFromResource("assets/graphiql.html")
+          getFromFile("server/src/main/resources/assets/graphiql.html")
         } ~
           parameters('query, 'operationName.?, 'variables.?) { (query, operationName, variables) ⇒
             QueryParser.parse(query) match {
@@ -108,11 +106,18 @@ object Server extends App {
               }
           }
         }
-    } ~
-      (get & pathEndOrSingleSlash) {
-        redirect("/graphql", PermanentRedirect)
-      }
+    } ~ (pathSingleSlash & redirectToTrailingSlashIfMissing(TemporaryRedirect)){
+        getFromResource("public/index.html")
+      } ~  {
+      getFromResourceDirectory("public")
+    }
 
-  Http().bindAndHandle(route, "0.0.0.0", sys.props.get("http.port").fold(8080)(_.toInt))
+
+  val server = Http().bindAndHandle(route, "0.0.0.0", sys.props.get("http.port").fold(8080)(_.toInt))
+
+  StdIn.readLine()
+
+  server.flatMap(_.unbind()) // trigger unbinding from the port
+    .onComplete(_ => system.terminate())
 
 }

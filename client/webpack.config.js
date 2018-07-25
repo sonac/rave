@@ -17,7 +17,7 @@ const babelLoader = {
 const webpack = require('webpack');
 
 module.exports = {
-    entry: path.resolve(__dirname, 'src/index.js'),
+    entry: path.resolve(__dirname, 'src/index.tsx'),
     output: {
         filename: 'bundle.js',
         path: path.join(__dirname, '/../public/javascripts')
@@ -78,7 +78,10 @@ module.exports = {
                 exclude: [
                     path.resolve(__dirname, 'src/__test__')
                 ],
-                context: __dirname
+                context: __dirname,
+                watchOption: {
+                    poll: true
+                }
             }
         })
     ]
