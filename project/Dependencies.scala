@@ -1,9 +1,6 @@
 import sbt._
 
 object Dependencies {
-
-  // VERSIONS
-
   lazy val exasolJdbcV = "6.0.1"
   lazy val shapelessV = "2.3.3"
   lazy val akkaHttpV = "10.1.3"
@@ -12,6 +9,9 @@ object Dependencies {
   lazy val sangriaCirceV = "1.2.1"
   lazy val circeV = "0.9.3"
   lazy val scalaTestV = "3.0.5"
+  lazy val slickV = "3.2.3"
+  lazy val postgresV = "9.4-1206-jdbc41"
+  lazy val scalajHttpV = "2.4.1"
 
   // DEPENDENCIES
 
@@ -24,10 +24,13 @@ object Dependencies {
   lazy val circeCore = "io.circe" %%	"circe-core" % circeV
   lazy val circeParser = "io.circe" %%	"circe-parser" % circeV
   lazy val circeOptics = "io.circe" %%	"circe-optics" % circeV
+  lazy val slick = "com.typesafe.slick" %% "slick" % slickV
+  lazy val postgres = "org.postgresql" % "postgresql" % postgresV
+  lazy val scalajHttp = "org.scalaj" %% "scalaj-http" % scalajHttpV
 
   lazy val scalaTest = "org.scalatest" %% "scalatest" % scalaTestV % Test
 
-  val coreDeps =
+  lazy val coreDeps =
     Seq(
       exasolJdbc,
       shapeless,
@@ -38,7 +41,9 @@ object Dependencies {
       circeCore,
       circeParser,
       circeOptics,
-      scalaTest
+      slick,
+      postgres,
+      scalaTest,
+      scalajHttp
     )
-
 }

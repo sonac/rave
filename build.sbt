@@ -1,5 +1,7 @@
 import Dependencies._
 
+
+
 lazy val root = (project in file("."))
   .enablePlugins(GitVersioning)
   .settings(
@@ -15,9 +17,8 @@ lazy val root = (project in file("."))
   ),
     parallelExecution in Test := false,
     libraryDependencies ++= coreDeps,
-    mainClass in compile := Some("com.crealytics.Server"),
+    mainClass in (Compile, run) := Some("com.crealytics.Server"),
     assemblyJarName in assembly := s"${name.value}.jar",
     test in assembly := {},
-    unmanagedSourceDirectories in Compile += baseDirectory.value / "server" / "src" / "main" / "scala",
-    unmanagedClasspath in Runtime += baseDirectory.value
+    fullClasspath in Runtime += baseDirectory.value / "public"
   )

@@ -20,20 +20,25 @@ module.exports = {
     entry: path.resolve(__dirname, 'src/index.tsx'),
     output: {
         filename: 'bundle.js',
-        path: path.join(__dirname, '/../public/javascripts')
+        path: path.join(__dirname, '/../public')
     },
     devtool: 'source-map',
     resolve: {
-        extensions: ['.ts', '.tsx', '.js'],
+        extensions: ['.webpack.js', '.web.js', '.json', '.mjs', '.ts', '.tsx', '.js'],
         alias: {
             constants: path.resolve(__dirname, 'src/constants'),
-            state: path.resolve(__dirname, 'src/state'),
+            state: path.resolve(__dirname, 'src/graphql'),
             utils: path.resolve(__dirname, 'src/utils'),
             components: path.resolve(__dirname, 'src/components')
         }
     },
     module: {
         rules: [
+            {
+                test: /\.mjs$/,
+                include: /node_modules/,
+                type: "javascript/auto",
+            },
             {
                 test: /\.tsx?$/,
                 exclude: [/node_modules/],
@@ -60,15 +65,22 @@ module.exports = {
                 ],
             },
             {
-              test: /\.scss$/,
-              use: [{
-                      loader: "style-loader" // creates style nodes from JS strings
-                  }, {
-                      loader: "css-loader" // translates CSS into CommonJS
-                  }, {
-                      loader: "sass-loader" // compiles Sass to CSS
-                  }
-                ]
+                test: /\.scss$/,
+                use: [
+                        {
+                            loader: "style-loader" // creates style nodes from JS strings
+                        },
+                        {
+                            loader: "css-loader" // translates CSS into CommonJS
+                        },
+                        {
+                            loader: "sass-loader" // compiles Sass to CSS
+                        }
+                     ]
+            },
+            {
+                test: /\.png$/,
+                use: 'url-loader'
             }
         ]
     },
