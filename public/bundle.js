@@ -58704,20 +58704,34 @@ var AddMovie = function AddMovie() {
         var data = _ref.data,
             client = _ref.client;
         return React.createElement(react_apollo_1.Mutation, { mutation: queries_1.UPDATE_CURRENT_MOVIE }, function (updateCurrentMovie) {
-            return React.createElement("div", { className: styles.addMovie }, React.createElement("div", { className: styles.inputs }, console.log(data), React.createElement("input", { type: 'text', placeholder: 'Title', onChange: function onChange(e) {
-                    handleChange(e, 'title');
-                } }), React.createElement("input", { type: 'text', placeholder: 'Genres', onChange: function onChange(e) {
-                    handleChange(e, 'genres');
-                } }), React.createElement("input", { type: 'text', placeholder: 'IMDB Link', onChange: function onChange(e) {
-                    handleChange(e, 'imdb');
-                } })), React.createElement("div", { className: styles.button }, React.createElement("button", { type: "button", onClick: function onClick() {
-                    return updateCurrentMovie({
+            return React.createElement("div", { className: styles.addMovie }, console.log(data), React.createElement("div", { className: styles.inputs }, React.createElement("input", { type: 'text', placeholder: 'Title', onChange: function onChange(e) {
+                    updateCurrentMovie({
                         variables: {
-                            index: 'teamAName',
-                            value: 'e.target.value'
+                            index: 'title',
+                            value: e.target.value
                         }
                     });
-                } }, "Add Movie")));
+                } }), React.createElement("input", { type: 'text', placeholder: 'Genres', onChange: function onChange(e) {
+                    updateCurrentMovie({
+                        variables: {
+                            index: 'genres',
+                            value: e.target.value
+                        }
+                    });
+                } }), React.createElement("input", { type: 'text', placeholder: 'IMDB Link', onChange: function onChange(e) {
+                    updateCurrentMovie({
+                        variables: {
+                            index: 'imdb',
+                            value: e.target.value
+                        }
+                    });
+                } })), React.createElement(react_apollo_1.Mutation, { mutation: queries_1.ADD_MOVIE }, function (addMovie) {
+                return React.createElement("div", { className: styles.button }, React.createElement("button", { type: "button", onClick: function onClick() {
+                        return addMovie({ variables: { title: data.currentMovie.title,
+                                genres: data.currentMovie.genres,
+                                imdb: data.currentMovie.imdb } });
+                    } }, "Add Movie"));
+            }));
         });
     });
 };
@@ -58766,6 +58780,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 var Body_1 = __webpack_require__(/*! components/Body */ "./src/components/Body/index.tsx");
 var styles = __webpack_require__(/*! ./styles.css */ "./src/components/App/styles.css");
 
@@ -58784,7 +58799,7 @@ var App = function (_react_1$Component) {
     }, {
         key: "render",
         value: function render() {
-            return React.createElement("div", { className: styles.app }, React.createElement("h3", null, "Sholom, wolrd!"), React.createElement(Body_1.default, null));
+            return React.createElement(react_router_dom_1.BrowserRouter, null, React.createElement("div", { className: styles.app }, React.createElement(react_router_dom_1.Link, { to: '/' }, React.createElement("h3", null, "Home")), React.createElement(Body_1.default, null)));
         }
     }]);
 
@@ -58832,9 +58847,9 @@ var UserMovies_1 = __webpack_require__(/*! ../UserMovies */ "./src/components/Us
 var AddMovie_1 = __webpack_require__(/*! components/AddMovie */ "./src/components/AddMovie/index.tsx");
 var styles = __webpack_require__(/*! ./styles.css */ "./src/components/Body/styles.css");
 function Body() {
-    return React.createElement(react_router_dom_1.BrowserRouter, null, React.createElement("div", { className: styles.body }, React.createElement(react_router_dom_1.Route, { exact: true, path: "/", render: function render(props) {
+    return React.createElement("div", { className: styles.body }, React.createElement(react_router_dom_1.Route, { exact: true, path: "/", render: function render(props) {
             return React.createElement(UserMovies_1.default, Object.assign({}, props, { userId: 1 }));
-        } }), React.createElement(react_router_dom_1.Route, { exact: true, path: "/add-movie", component: AddMovie_1.default })));
+        } }), React.createElement(react_router_dom_1.Route, { exact: true, path: "/add-movie", component: AddMovie_1.default }));
 }
 exports.default = Body;
 
@@ -58873,6 +58888,7 @@ if(false) {}
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var react_apollo_1 = __webpack_require__(/*! react-apollo */ "./node_modules/react-apollo/react-apollo.browser.umd.js");
+var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 var queries_1 = __webpack_require__(/*! ../../graphql/movies/queries */ "./src/graphql/movies/queries.ts");
 var styles = __webpack_require__(/*! ./styles.css */ "./src/components/UserMovies/styles.css");
 var UserMovies = function UserMovies(_ref) {
@@ -58890,7 +58906,7 @@ var UserMovies = function UserMovies(_ref) {
         if (loading) return null;
         if (error) return "Error!: " + error;
         var add_img = '../../images/add.png';
-        return React.createElement("div", { className: styles.poster_list }, React.createElement("img", { src: add_img }), data.userMovies.map(function (x) {
+        return React.createElement("div", { className: styles.poster_list }, React.createElement(react_router_dom_1.Link, { to: "/add-movie" }, React.createElement("img", { src: add_img })), data.userMovies.map(function (x) {
             return React.createElement("div", { key: x.title, className: styles.poster }, React.createElement("img", { src: x.posterLink }));
         }));
     });
@@ -58956,8 +58972,9 @@ exports.default = client;
 
 
 var _templateObject = _taggedTemplateLiteral(["\n          query userMoviesQuery($id: Int!)\n          {\n              userMovies(id: $id) {\n                title,\n                posterLink\n              }\n          }"], ["\n          query userMoviesQuery($id: Int!)\n          {\n              userMovies(id: $id) {\n                title,\n                posterLink\n              }\n          }"]),
-    _templateObject2 = _taggedTemplateLiteral(["\n          {\n            currentMovie @client {\n              title\n              genres\n              imdb\n            }\n          }"], ["\n          {\n            currentMovie @client {\n              title\n              genres\n              imdb\n            }\n          }"]),
-    _templateObject3 = _taggedTemplateLiteral(["\n            mutation updateCurrentMovie($index: String!, $value: String!) {\n              updateCurrentMovie(index: $index, value: $value) @client {\n                title\n                genres\n                imdb\n              }\n            }"], ["\n            mutation updateCurrentMovie($index: String!, $value: String!) {\n              updateCurrentMovie(index: $index, value: $value) @client {\n                title\n                genres\n                imdb\n              }\n            }"]);
+    _templateObject2 = _taggedTemplateLiteral(["\n          query GetCurrentMovie {\n            currentMovie @client {\n              title\n              genres\n              imdb\n            }\n          }"], ["\n          query GetCurrentMovie {\n            currentMovie @client {\n              title\n              genres\n              imdb\n            }\n          }"]),
+    _templateObject3 = _taggedTemplateLiteral(["\n            mutation updateCurrentMovie($index: String!, $value: String!) {\n              updateCurrentMovie(index: $index, value: $value) @client\n            }"], ["\n            mutation updateCurrentMovie($index: String!, $value: String!) {\n              updateCurrentMovie(index: $index, value: $value) @client\n            }"]),
+    _templateObject4 = _taggedTemplateLiteral(["\n            mutation addMovie($title: String!, $genres: String!, $imdb: String!) {\n              addMovie(title: $title, genre: $genres, IMDBLink: $imdb)\n            }"], ["\n            mutation addMovie($title: String!, $genres: String!, $imdb: String!) {\n              addMovie(title: $title, genre: $genres, IMDBLink: $imdb)\n            }"]);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -58966,6 +58983,7 @@ var graphql_tag_1 = __webpack_require__(/*! graphql-tag */ "./node_modules/graph
 exports.USER_MOVIES_QUERY = graphql_tag_1.default(_templateObject);
 exports.GET_CURRENT_MOVIE = graphql_tag_1.default(_templateObject2);
 exports.UPDATE_CURRENT_MOVIE = graphql_tag_1.default(_templateObject3);
+exports.ADD_MOVIE = graphql_tag_1.default(_templateObject4);
 
 /***/ }),
 
@@ -58979,13 +58997,20 @@ exports.UPDATE_CURRENT_MOVIE = graphql_tag_1.default(_templateObject3);
 "use strict";
 
 
+var _templateObject = _taggedTemplateLiteral(["\n          query GetCurrentMovie {\n            currentMovie @client {\n              title\n              genres\n              imdb\n            }\n          }"], ["\n          query GetCurrentMovie {\n            currentMovie @client {\n              title\n              genres\n              imdb\n            }\n          }"]);
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
 Object.defineProperty(exports, "__esModule", { value: true });
+var graphql_tag_1 = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/src/index.js");
 exports.defaults = {
     currentMovie: {
         __typename: 'Movie',
-        title: 'hello, apollo ',
-        genres: 'hey there',
-        imdb: 'yes'
+        title: '',
+        genres: '',
+        imdb: ''
     }
 };
 exports.resolvers = {
@@ -58995,7 +59020,13 @@ exports.resolvers = {
                 value = _ref.value;
             var cache = _ref2.cache;
 
-            console.log(index, value);
+            var GET_CURRENT_MOVIE = graphql_tag_1.default(_templateObject);
+            var previousState = cache.readQuery({ query: GET_CURRENT_MOVIE });
+            var newData = {
+                currentMovie: Object.assign({}, previousState.currentMovie, _defineProperty({}, index, value))
+            };
+            cache.writeQuery({ query: GET_CURRENT_MOVIE, data: newData });
+            return null;
         }
     }
 };

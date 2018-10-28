@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Component } from "react";
 import { Query, Mutation } from 'react-apollo';
-import { GET_CURRENT_MOVIE, UPDATE_CURRENT_MOVIE } from '../../graphql/movies/queries';
+import { GET_CURRENT_MOVIE, UPDATE_CURRENT_MOVIE, ADD_MOVIE } from '../../graphql/movies/queries';
 
 const styles = require('./styles.css');
 
@@ -24,20 +24,36 @@ const AddMovie = () => {
                 <Mutation mutation={UPDATE_CURRENT_MOVIE}>
                     { updateCurrentMovie =>
                         <div className={styles.addMovie}>
+                    {console.log(data)}
                             <div className={styles.inputs}>
-                            {console.log(data)}
-                                <input type='text' placeholder='Title' onChange={(e) => {handleChange(e, 'title')}}/>
-                                <input type='text' placeholder='Genres' onChange={(e) => {handleChange(e, 'genres')}}/>
-                                <input type='text' placeholder='IMDB Link' onChange={(e) => {handleChange(e, 'imdb')}}/>
-                            </div>
-                            <div className={styles.button}>
-                                <button type="button" onClick={() => updateCurrentMovie({
+                                <input type='text' placeholder='Title' onChange={(e) => {updateCurrentMovie({
                                                                                     variables: {
-                                                                                    index: 'teamAName',
-                                                                                    value: 'e.target.value'
+                                                                                    index: 'title',
+                                                                                    value: e.target.value
                                                                                     }
-                                                                    })}>Add Movie</button> 
+                                                                    })}}/>
+                                <input type='text' placeholder='Genres' onChange={(e) => {updateCurrentMovie({
+                                                                                    variables: {
+                                                                                    index: 'genres',
+                                                                                    value: e.target.value
+                                                                                    }
+                                                                    })}}/>
+                                <input type='text' placeholder='IMDB Link' onChange={(e) => {updateCurrentMovie({
+                                                                                    variables: {
+                                                                                    index: 'imdb',
+                                                                                    value: e.target.value
+                                                                                    }
+                                                                    })}}/>
                             </div>
+                            <Mutation mutation={ADD_MOVIE}>
+                            { addMovie =>
+                            <div className={styles.button}>
+                                <button type="button" onClick={() => addMovie({ variables: {title: data.currentMovie.title, 
+                                    genres: data.currentMovie.genres,
+                                    imdb: data.currentMovie.imdb}})}>Add Movie</button> 
+                            </div>
+                            }
+                            </Mutation>
                         </div>
                     }
                 </Mutation>

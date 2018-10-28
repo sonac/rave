@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Component } from 'react';
+import { Link, BrowserRouter as Router } from 'react-router-dom';
 import Body from 'components/Body';
 
 const styles = require('./styles.css');
@@ -11,10 +12,12 @@ export default class App extends Component {
 
     render() {
         return (
+            <Router>
                 <div className={styles.app}>
-                    <h3>Sholom, wolrd!</h3>
+                    <Link to='/'><h3>Home</h3></Link>
                     <Body/>
                 </div>
+            </Router>
         );
     }
 }
