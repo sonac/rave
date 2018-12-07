@@ -1,4 +1,4 @@
-package com.crealytics.service
+package sonac.service
 
 import com.typesafe.config.ConfigFactory
 import scalaj.http._

@@ -48,9 +48,9 @@ const AddMovie = () => {
                             <Mutation mutation={ADD_MOVIE}>
                             { addMovie =>
                             <div className={styles.button}>
-                                <button type="button" onClick={() => addMovie({ variables: {title: data.currentMovie.title, 
-                                    genres: data.currentMovie.genres,
-                                    imdb: data.currentMovie.imdb}})}>Add Movie</button> 
+                                <button type="button" onClick={() => addMovie({ variables: {title: data.movieInput.title, 
+                                    genres: data.movieInput.genres,
+                                    imdb: data.movieInput.imdb}})}>Add Movie</button> 
                             </div>
                             }
                             </Mutation>

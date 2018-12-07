@@ -12,6 +12,7 @@ object Dependencies {
   lazy val slickV = "3.2.3"
   lazy val postgresV = "9.4-1206-jdbc41"
   lazy val scalajHttpV = "2.4.1"
+  lazy val jwtV = "0.16.0"
 
   // DEPENDENCIES
 
@@ -27,6 +28,7 @@ object Dependencies {
   lazy val slick = "com.typesafe.slick" %% "slick" % slickV
   lazy val postgres = "org.postgresql" % "postgresql" % postgresV
   lazy val scalajHttp = "org.scalaj" %% "scalaj-http" % scalajHttpV
+  lazy val jwt = "com.pauldijou" %% "jwt-core" % jwtV
 
   lazy val scalaTest = "org.scalatest" %% "scalatest" % scalaTestV % Test
 
@@ -44,6 +46,7 @@ object Dependencies {
       slick,
       postgres,
       scalaTest,
-      scalajHttp
+      scalajHttp,
+      jwt
     )
 }

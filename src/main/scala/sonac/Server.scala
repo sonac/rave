@@ -1,4 +1,7 @@
-package com.crealytics
+package sonac
+
+import scala.util.control.NonFatal
+import scala.util.{Failure, Success}
 
 import sangria.ast.Document
 import sangria.execution.{ErrorWithResolver, Executor, QueryAnalysisError}
@@ -10,18 +13,18 @@ import akka.http.scaladsl.Http
 import akka.http.scaladsl.model.StatusCodes._
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.model.MediaTypes._
+import akka.http.scaladsl.model.headers.Cookie
 import akka.http.scaladsl.server._
 import akka.stream.ActorMaterializer
 import de.heikoseeberger.akkahttpcirce.ErrorAccumulatingCirceSupport._
 import io.circe._
 import io.circe.optics.JsonPath._
 import io.circe.parser._
-
-import scala.util.control.NonFatal
-import scala.util.{Failure, Success}
 import common.GraphQLRequestUnmarshaller._
-import com.crealytics.models._
-import com.crealytics.service.IMDBapi
+
+import sonac.models.SchemaDefinition._
+import sonac.models.SchemaDefinition
+import sonac.service.IMDBapi
 
 import scala.io.StdIn
 
@@ -34,7 +37,7 @@ object Server extends App {
   import system.dispatcher
 
   def executeGraphQL(query: Document, operationName: Option[String], variables: Json) = {
-    complete(Executor.execute(SchemaDefinition.DBSchema, query, new DAO,
+    complete(Executor.execute(SchemaDefinition.DBSchema, query, new QueryContext,
       variables = if (variables.isNull) Json.obj() else variables,
       operationName = operationName)
       .map(OK -> _)
@@ -116,6 +119,12 @@ object Server extends App {
     path("add-movie") {
       getFromFile("public/index.html")
     } ~
+    path("registration") {
+      getFromFile("public/index.html")
+    } ~
+    path("login") {
+      getFromFile("public/index.html")
+    } ~
     //static files routes
     path("bundle.js") {
       get {
@@ -126,7 +135,7 @@ object Server extends App {
       getFromFile(s"public/images/$img")
     }
 
-  print(IMDBapi.get("tt4779682"))
+  //print(IMDBapi.get("tt4779682"))
 
   val server = Http().bindAndHandle(route, "0.0.0.0", sys.props.get("http.port").fold(8080)(_.toInt))
 

@@ -1,4 +1,4 @@
-package com.crealytics.models
+package sonac.models
 
 import java.sql.Timestamp
 

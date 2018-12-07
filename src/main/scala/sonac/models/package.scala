@@ -1,4 +1,4 @@
-package com.crealytics
+package sonac
 
 import akka.http.scaladsl.model.DateTime
 import sangria.execution.deferred.HasId
@@ -13,7 +13,7 @@ package object models {
     implicit def hasId[T <: Identifiable]: HasId[T, Int] = HasId(_.id)
   }
 
-  case class Movie(id: Int, title: String, genres: String, imdb: String, posterLink: String, createdAt: DateTime = DateTime.now)
+  case class Movie(id: Int, title: String, genres: String, imdb: String, posterLink: String = "", createdAt: DateTime = DateTime.now)
     extends Identifiable
 
   case class User(id: Int, username: String, password: String, eMail: String, createdAt: DateTime = DateTime.now)

@@ -1,4 +1,4 @@
-package com.crealytics.service
+package sonac.service
 
 import org.scalatest.FlatSpec
 

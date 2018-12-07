@@ -1,4 +1,4 @@
-package com.crealytics.common
+package sonac.common
 
 import scala.reflect.ClassTag
 import scala.util.control.NonFatal

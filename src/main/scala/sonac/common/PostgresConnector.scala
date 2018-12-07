@@ -1,4 +1,4 @@
-package com.crealytics.common
+package sonac.common
 
 import com.typesafe.config.ConfigFactory
 import slick.driver.PostgresDriver.api._

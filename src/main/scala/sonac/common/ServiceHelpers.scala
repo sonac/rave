@@ -1,4 +1,4 @@
-package com.crealytics.common
+package sonac.common
 
 import scala.collection.GenTraversable
 import shapeless._, ops.traversable.FromTraversable

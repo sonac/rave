@@ -1,4 +1,4 @@
-package com.crealytics.common
+package sonac.common
 
 import java.nio.charset.Charset
 

@@ -1,25 +1,23 @@
-package com.crealytics.models
+package sonac.models
 
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
-
 import slick.jdbc.PostgresProfile.api._
-
-import com.crealytics.common.PostgresConnector
 import DBSchema._
+import sonac.common.PostgresConnector
+import sonac.service.UserWithToken
 
-class DAO extends PostgresConnector {
+trait DAO extends PostgresConnector {
 
   private val movieTable: TableQuery[MovieTable] = TableQuery[MovieTable]
   private val userTable: TableQuery[UserTable] = TableQuery[UserTable]
   private val userMoviesTable: TableQuery[UserMoviesTable] = TableQuery[UserMoviesTable]
 
-  def addMovie(title: String, genres: String, imdbLink: String): Future[Int] = {
-    val res = db.run(movieTable.map{ mt =>
-      (mt.title, mt.genres, mt.imdb)
-    } += (title, genres, imdbLink))
-    res.foreach(println(_))
-    res
+  private val insertUserTable = userTable returning userTable.map(_.id) into ((u, id) => u.copy(id = id))
+  private val insertMovieTable = movieTable returning movieTable.map(_.id) into ((u, id) => u.copy(id = id))
+
+  def addMovie(title: String, genres: String, imdbLink: String): Future[Movie] = {
+    db.run(insertMovieTable += Movie(0, title, genres, imdbLink))
   }
 
   def deleteMovie(id: Int): Future[Boolean] = {
@@ -34,8 +32,8 @@ class DAO extends PostgresConnector {
     db.run(movieTable.result)
   }
 
-  def addUser(user: User): Future[Int] = {
-    db.run(userTable += user)
+  def addUser(username: String, password: String, eMail: String): Future[UserWithToken] = {
+    db.run(insertUserTable += User(0, username, password, eMail)).map(UserWithToken(_))
   }
 
   def deleteUser(id: Int): Future[Boolean] = {
@@ -44,6 +42,14 @@ class DAO extends PostgresConnector {
 
   def getUserById(id: Int): Future[Option[User]] = {
     db.run(userTable.filter(_.id === id).result.headOption)
+  }
+
+  def getUserByUsername(username: String): Future[Option[User]] = {
+    db.run(userTable.filter(_.username === username).result.headOption)
+  }
+
+  def getUser(username: String, password: String): Future[Option[User]] = {
+    db.run(userTable.filter(u => u.username === username && u.password === password).result.headOption)
   }
 
   def getAllUsers: Future[Seq[User]] = {

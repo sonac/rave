@@ -1,4 +1,4 @@
-package com.crealytics
+package sonac
 
 import java.util.Properties
 import scala.language.implicitConversions

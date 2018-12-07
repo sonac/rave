@@ -8523,6 +8523,44 @@ exports.push([module.i, "", ""]);
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./src/components/Login/styles.css":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--7-1!./src/components/Login/styles.css ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")();
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./src/components/Registration/styles.css":
+/*!************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--7-1!./src/components/Registration/styles.css ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")();
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js?!./src/components/UserMovies/styles.css":
 /*!**********************************************************************************!*\
   !*** ./node_modules/css-loader??ref--7-1!./src/components/UserMovies/styles.css ***!
@@ -58727,9 +58765,9 @@ var AddMovie = function AddMovie() {
                     });
                 } })), React.createElement(react_apollo_1.Mutation, { mutation: queries_1.ADD_MOVIE }, function (addMovie) {
                 return React.createElement("div", { className: styles.button }, React.createElement("button", { type: "button", onClick: function onClick() {
-                        return addMovie({ variables: { title: data.currentMovie.title,
-                                genres: data.currentMovie.genres,
-                                imdb: data.currentMovie.imdb } });
+                        return addMovie({ variables: { title: data.movieInput.title,
+                                genres: data.movieInput.genres,
+                                imdb: data.movieInput.imdb } });
                     } }, "Add Movie"));
             }));
         });
@@ -58799,7 +58837,7 @@ var App = function (_react_1$Component) {
     }, {
         key: "render",
         value: function render() {
-            return React.createElement(react_router_dom_1.BrowserRouter, null, React.createElement("div", { className: styles.app }, React.createElement(react_router_dom_1.Link, { to: '/' }, React.createElement("h3", null, "Home")), React.createElement(Body_1.default, null)));
+            return React.createElement(react_router_dom_1.BrowserRouter, null, React.createElement("div", { className: styles.app }, React.createElement(react_router_dom_1.Link, { to: '/' }, React.createElement("h3", null, "Home")), React.createElement(react_router_dom_1.Link, { to: '/registration' }, React.createElement("h4", null, "Register")), React.createElement(react_router_dom_1.Link, { to: '/login' }, React.createElement("h4", null, "Login")), React.createElement(Body_1.default, null)));
         }
     }]);
 
@@ -58845,11 +58883,13 @@ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 var UserMovies_1 = __webpack_require__(/*! ../UserMovies */ "./src/components/UserMovies/index.tsx");
 var AddMovie_1 = __webpack_require__(/*! components/AddMovie */ "./src/components/AddMovie/index.tsx");
+var Login_1 = __webpack_require__(/*! components/Login */ "./src/components/Login/index.tsx");
+var Registration_1 = __webpack_require__(/*! components/Registration */ "./src/components/Registration/index.tsx");
 var styles = __webpack_require__(/*! ./styles.css */ "./src/components/Body/styles.css");
 function Body() {
-    return React.createElement("div", { className: styles.body }, React.createElement(react_router_dom_1.Route, { exact: true, path: "/", render: function render(props) {
+    return React.createElement("div", { className: styles.body }, React.createElement(react_router_dom_1.Route, { exact: true, path: '/', render: function render(props) {
             return React.createElement(UserMovies_1.default, Object.assign({}, props, { userId: 1 }));
-        } }), React.createElement(react_router_dom_1.Route, { exact: true, path: "/add-movie", component: AddMovie_1.default }));
+        } }), React.createElement(react_router_dom_1.Route, { path: '/add-movie', component: AddMovie_1.default }), React.createElement(react_router_dom_1.Route, { path: '/registration', component: Registration_1.default }), React.createElement(react_router_dom_1.Route, { path: '/login', component: Login_1.default }));
 }
 exports.default = Body;
 
@@ -58866,6 +58906,161 @@ exports.default = Body;
 
 // load the styles
 var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--7-1!./styles.css */ "./node_modules/css-loader/index.js?!./src/components/Body/styles.css");
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/addStyles.js */ "./node_modules/style-loader/addStyles.js")(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {}
+
+/***/ }),
+
+/***/ "./src/components/Login/index.tsx":
+/*!****************************************!*\
+  !*** ./src/components/Login/index.tsx ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+var react_apollo_1 = __webpack_require__(/*! react-apollo */ "./node_modules/react-apollo/react-apollo.browser.umd.js");
+var queries_1 = __webpack_require__(/*! ../../graphql/movies/queries */ "./src/graphql/movies/queries.ts");
+var styles = __webpack_require__(/*! ./styles.css */ "./src/components/Login/styles.css");
+var Login = function Login() {
+    return React.createElement(react_apollo_1.Query, { query: queries_1.GET_CURRENT_LOGIN }, function (_ref) {
+        var data = _ref.data,
+            client = _ref.client;
+        return React.createElement(react_apollo_1.Mutation, { mutation: queries_1.UPDATE_LOGIN_INPUT }, function (updateLoginInput) {
+            return React.createElement("div", { className: styles.addMovie }, console.log(data), React.createElement("div", { className: styles.inputs }, React.createElement("input", { type: 'text', placeholder: 'Login', onChange: function onChange(e) {
+                    updateLoginInput({
+                        variables: {
+                            index: 'username',
+                            value: e.target.value
+                        }
+                    });
+                } }), React.createElement("input", { type: 'text', placeholder: 'Password', onChange: function onChange(e) {
+                    updateLoginInput({
+                        variables: {
+                            index: 'password',
+                            value: e.target.value
+                        }
+                    });
+                } })), React.createElement(react_apollo_1.Mutation, { mutation: queries_1.UPDATE_CURRENT_USER }, function (updateCurrentUser) {
+                return React.createElement("div", { className: styles.button }, React.createElement("button", { type: "button", onClick: function onClick() {
+                        return updateCurrentUser({ variables: { username: data.loginInput.username,
+                                password: data.loginInput.password } });
+                    } }, "Login"));
+            }));
+        });
+    });
+};
+exports.default = Login;
+
+/***/ }),
+
+/***/ "./src/components/Login/styles.css":
+/*!*****************************************!*\
+  !*** ./src/components/Login/styles.css ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--7-1!./styles.css */ "./node_modules/css-loader/index.js?!./src/components/Login/styles.css");
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/addStyles.js */ "./node_modules/style-loader/addStyles.js")(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {}
+
+/***/ }),
+
+/***/ "./src/components/Registration/index.tsx":
+/*!***********************************************!*\
+  !*** ./src/components/Registration/index.tsx ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+var react_apollo_1 = __webpack_require__(/*! react-apollo */ "./node_modules/react-apollo/react-apollo.browser.umd.js");
+var queries_1 = __webpack_require__(/*! ../../graphql/movies/queries */ "./src/graphql/movies/queries.ts");
+var styles = __webpack_require__(/*! ./styles.css */ "./src/components/Registration/styles.css");
+var Registration = function Registration() {
+    return React.createElement(react_apollo_1.Query, { query: queries_1.GET_USER_INPUT }, function (_ref) {
+        var data = _ref.data,
+            client = _ref.client;
+        return React.createElement(react_apollo_1.Mutation, { mutation: queries_1.UPDATE_USER_INPUT }, function (updateUserInput) {
+            return React.createElement("div", { className: styles.addMovie }, console.log(data), React.createElement("div", { className: styles.inputs }, React.createElement("input", { type: 'text', placeholder: 'Username', onChange: function onChange(e) {
+                    updateUserInput({
+                        variables: {
+                            index: 'username',
+                            value: e.target.value
+                        }
+                    });
+                } }), React.createElement("input", { type: 'password', placeholder: 'Password', onChange: function onChange(e) {
+                    updateUserInput({
+                        variables: {
+                            index: 'password',
+                            value: e.target.value
+                        }
+                    });
+                } }), React.createElement("input", { type: 'text', placeholder: 'Email', onChange: function onChange(e) {
+                    updateUserInput({
+                        variables: {
+                            index: 'eMail',
+                            value: e.target.value
+                        }
+                    });
+                } })), React.createElement(react_apollo_1.Mutation, { mutation: queries_1.ADD_USER, update: function update(cache, _ref2) {
+                    var addUser = _ref2.data.addUser;
+
+                    cache.writeQuery({
+                        query: queries_1.GET_CURRENT_USER,
+                        data: { currentUser: Object.assign({}, addUser, { __typename: 'CurrentUser' }) }
+                    });
+                    cache.writeQuery({
+                        query: queries_1.GET_USER_INPUT,
+                        data: { userInput: { __typename: 'User', username: '', password: '', eMail: '' } }
+                    });
+                } }, function (addUser) {
+                return React.createElement("div", { className: styles.button }, React.createElement("button", { type: "button", onClick: function onClick() {
+                        return addUser({ variables: { username: data.userInput.username,
+                                password: data.userInput.password,
+                                eMail: data.userInput.eMail } }).then(function () {
+                            return window.location.href = '/';
+                        });
+                    } }, "Register"));
+            }));
+        });
+    });
+};
+exports.default = Registration;
+
+/***/ }),
+
+/***/ "./src/components/Registration/styles.css":
+/*!************************************************!*\
+  !*** ./src/components/Registration/styles.css ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--7-1!./styles.css */ "./node_modules/css-loader/index.js?!./src/components/Registration/styles.css");
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(/*! ../../../node_modules/style-loader/addStyles.js */ "./node_modules/style-loader/addStyles.js")(content, {});
@@ -58972,9 +59167,17 @@ exports.default = client;
 
 
 var _templateObject = _taggedTemplateLiteral(["\n          query userMoviesQuery($id: Int!)\n          {\n              userMovies(id: $id) {\n                title,\n                posterLink\n              }\n          }"], ["\n          query userMoviesQuery($id: Int!)\n          {\n              userMovies(id: $id) {\n                title,\n                posterLink\n              }\n          }"]),
-    _templateObject2 = _taggedTemplateLiteral(["\n          query GetCurrentMovie {\n            currentMovie @client {\n              title\n              genres\n              imdb\n            }\n          }"], ["\n          query GetCurrentMovie {\n            currentMovie @client {\n              title\n              genres\n              imdb\n            }\n          }"]),
+    _templateObject2 = _taggedTemplateLiteral(["\n          query GetCurrentMovie {\n            movieInput @client {\n              title\n              genres\n              imdb\n            }\n          }"], ["\n          query GetCurrentMovie {\n            movieInput @client {\n              title\n              genres\n              imdb\n            }\n          }"]),
     _templateObject3 = _taggedTemplateLiteral(["\n            mutation updateCurrentMovie($index: String!, $value: String!) {\n              updateCurrentMovie(index: $index, value: $value) @client\n            }"], ["\n            mutation updateCurrentMovie($index: String!, $value: String!) {\n              updateCurrentMovie(index: $index, value: $value) @client\n            }"]),
-    _templateObject4 = _taggedTemplateLiteral(["\n            mutation addMovie($title: String!, $genres: String!, $imdb: String!) {\n              addMovie(title: $title, genre: $genres, IMDBLink: $imdb)\n            }"], ["\n            mutation addMovie($title: String!, $genres: String!, $imdb: String!) {\n              addMovie(title: $title, genre: $genres, IMDBLink: $imdb)\n            }"]);
+    _templateObject4 = _taggedTemplateLiteral(["\n            mutation addMovie($title: String!, $genres: String!, $imdb: String!) {\n              addMovie(title: $title, genre: $genres, IMDBLink: $imdb)\n            }"], ["\n            mutation addMovie($title: String!, $genres: String!, $imdb: String!) {\n              addMovie(title: $title, genre: $genres, IMDBLink: $imdb)\n            }"]),
+    _templateObject5 = _taggedTemplateLiteral(["\n            query GetUserInput {\n              userInput @client {\n                username\n                password\n                eMail\n              }\n}"], ["\n            query GetUserInput {\n              userInput @client {\n                username\n                password\n                eMail\n              }\n}"]),
+    _templateObject6 = _taggedTemplateLiteral(["\n            mutation updateUserInput($index: String!, $value: String!) {\n              updateUserInput(index: $index, value: $value) @client\n            }"], ["\n            mutation updateUserInput($index: String!, $value: String!) {\n              updateUserInput(index: $index, value: $value) @client\n            }"]),
+    _templateObject7 = _taggedTemplateLiteral(["\n            mutation addUser($username: String!, $password: String!, $eMail: String!) {\n              addUser(username: $username, password: $password, email: $eMail) {\n                username\n                eMail\n                token\n              }\n            }"], ["\n            mutation addUser($username: String!, $password: String!, $eMail: String!) {\n              addUser(username: $username, password: $password, email: $eMail) {\n                username\n                eMail\n                token\n              }\n            }"]),
+    _templateObject8 = _taggedTemplateLiteral(["\n            query GetCurrentUser {\n              currentUser @client {\n                username\n                eMail\n                token\n              }\n            }"], ["\n            query GetCurrentUser {\n              currentUser @client {\n                username\n                eMail\n                token\n              }\n            }"]),
+    _templateObject9 = _taggedTemplateLiteral(["\n            mutation updateLoginInput($index: String!, $value: String!) {\n              updateLoginInput(index: $index, value: $value) @client\n            }"], ["\n            mutation updateLoginInput($index: String!, $value: String!) {\n              updateLoginInput(index: $index, value: $value) @client\n            }"]),
+    _templateObject10 = _taggedTemplateLiteral(["\n            query GetCurrentLogin {\n              loginInput @client {\n                username\n                password\n              }\n            }"], ["\n            query GetCurrentLogin {\n              loginInput @client {\n                username\n                password\n              }\n            }"]),
+    _templateObject11 = _taggedTemplateLiteral(["\n            query Authenticate($username: String!, $password: String!){\n              authenticate(username: $username, password: $password) {\n                username\n                token\n              }\n            }"], ["\n            query Authenticate($username: String!, $password: String!){\n              authenticate(username: $username, password: $password) {\n                username\n                token\n              }\n            }"]),
+    _templateObject12 = _taggedTemplateLiteral(["\n            mutation updateCurrentUser($username: String!, $password: String!) {\n              updateCurrentUser(username: $username, password: $password) @client\n            }"], ["\n            mutation updateCurrentUser($username: String!, $password: String!) {\n              updateCurrentUser(username: $username, password: $password) @client\n            }"]);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -58984,6 +59187,14 @@ exports.USER_MOVIES_QUERY = graphql_tag_1.default(_templateObject);
 exports.GET_CURRENT_MOVIE = graphql_tag_1.default(_templateObject2);
 exports.UPDATE_CURRENT_MOVIE = graphql_tag_1.default(_templateObject3);
 exports.ADD_MOVIE = graphql_tag_1.default(_templateObject4);
+exports.GET_USER_INPUT = graphql_tag_1.default(_templateObject5);
+exports.UPDATE_USER_INPUT = graphql_tag_1.default(_templateObject6);
+exports.ADD_USER = graphql_tag_1.default(_templateObject7);
+exports.GET_CURRENT_USER = graphql_tag_1.default(_templateObject8);
+exports.UPDATE_LOGIN_INPUT = graphql_tag_1.default(_templateObject9);
+exports.GET_CURRENT_LOGIN = graphql_tag_1.default(_templateObject10);
+exports.LOGIN = graphql_tag_1.default(_templateObject11);
+exports.UPDATE_CURRENT_USER = graphql_tag_1.default(_templateObject12);
 
 /***/ }),
 
@@ -58997,7 +59208,9 @@ exports.ADD_MOVIE = graphql_tag_1.default(_templateObject4);
 "use strict";
 
 
-var _templateObject = _taggedTemplateLiteral(["\n          query GetCurrentMovie {\n            currentMovie @client {\n              title\n              genres\n              imdb\n            }\n          }"], ["\n          query GetCurrentMovie {\n            currentMovie @client {\n              title\n              genres\n              imdb\n            }\n          }"]);
+var _templateObject = _taggedTemplateLiteral(["\n          query GetCurrentMovie {\n            movieInput @client {\n              title\n              genres\n              imdb\n            }\n          }"], ["\n          query GetCurrentMovie {\n            movieInput @client {\n              title\n              genres\n              imdb\n            }\n          }"]),
+    _templateObject2 = _taggedTemplateLiteral(["\n        query GetCurrentLogin {\n          loginInput @client {\n            username\n            password\n          }\n        }"], ["\n        query GetCurrentLogin {\n          loginInput @client {\n            username\n            password\n          }\n        }"]),
+    _templateObject3 = _taggedTemplateLiteral(["\n          query GetLoginError {\n            loginError @client {\n              error\n            }\n          }"], ["\n          query GetLoginError {\n            loginError @client {\n              error\n            }\n          }"]);
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -59005,12 +59218,34 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var graphql_tag_1 = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/src/index.js");
+var queries_1 = __webpack_require__(/*! ./movies/queries */ "./src/graphql/movies/queries.ts");
 exports.defaults = {
-    currentMovie: {
+    movieInput: {
         __typename: 'Movie',
         title: '',
         genres: '',
         imdb: ''
+    },
+    userInput: {
+        __typename: 'User',
+        username: '',
+        password: '',
+        eMail: ''
+    },
+    currentUser: {
+        __typename: 'CurrentUser',
+        username: null,
+        eMail: null,
+        token: null
+    },
+    loginInput: {
+        __typename: 'Login',
+        username: null,
+        password: null
+    },
+    loginError: {
+        __typename: 'LoginError',
+        error: null
     }
 };
 exports.resolvers = {
@@ -59023,9 +59258,57 @@ exports.resolvers = {
             var GET_CURRENT_MOVIE = graphql_tag_1.default(_templateObject);
             var previousState = cache.readQuery({ query: GET_CURRENT_MOVIE });
             var newData = {
-                currentMovie: Object.assign({}, previousState.currentMovie, _defineProperty({}, index, value))
+                movieInput: Object.assign({}, previousState.movieInput, _defineProperty({}, index, value))
             };
             cache.writeQuery({ query: GET_CURRENT_MOVIE, data: newData });
+            return null;
+        },
+        updateUserInput: function updateUserInput(_, _ref3, _ref4) {
+            var index = _ref3.index,
+                value = _ref3.value;
+            var cache = _ref4.cache;
+
+            var previousState = cache.readQuery({ query: queries_1.GET_CURRENT_USER });
+            var newData = {
+                userInput: Object.assign({}, previousState.userInput, _defineProperty({}, index, value))
+            };
+            cache.writeQuery({ query: queries_1.GET_CURRENT_USER, data: newData });
+            return null;
+        },
+        updateLoginInput: function updateLoginInput(_, _ref5, _ref6) {
+            var index = _ref5.index,
+                value = _ref5.value;
+            var cache = _ref6.cache;
+
+            var GET_CURRENT_LOGIN = graphql_tag_1.default(_templateObject2);
+            var previousState = cache.readQuery({ query: GET_CURRENT_LOGIN });
+            var newData = {
+                loginInput: Object.assign({}, previousState.loginInput, _defineProperty({}, index, value))
+            };
+            cache.writeQuery({ query: GET_CURRENT_LOGIN, data: newData });
+            return null;
+        },
+        updateCurrentUser: function updateCurrentUser(_, _ref7, _ref8) {
+            var username = _ref7.username,
+                password = _ref7.password;
+            var cache = _ref8.cache;
+
+            var login = cache.readQuery({ query: queries_1.LOGIN, variables: { username: username, password: password } });
+            if (login === null) {
+                cache.writeQuery({
+                    query: graphql_tag_1.default(_templateObject3),
+                    data: {
+                        loginError: {
+                            error: 'wrong loing data'
+                        }
+                    }
+                });
+            } else {
+                var newData = {
+                    currentUser: Object.assign({}, login)
+                };
+                cache.writeQuery({ query: queries_1.GET_CURRENT_USER, data: newData });
+            }
             return null;
         }
     }
