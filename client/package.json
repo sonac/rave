@@ -1,0 +1,42 @@
+{
+  "name": "sc-bi",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@types/graphql": "^14.0.3",
+    "@types/node": "^10.9.2",
+    "@types/react": "^16.4.12",
+    "apollo-boost": "^0.1.16",
+    "apollo-cache-inmemory": "^1.2.9",
+    "apollo-client": "^2.4.1",
+    "apollo-link-http": "^1.5.4",
+    "apollo-link-state": "^0.4.1",
+    "awesome-typescript-loader": "^5.2.0",
+    "babel-loader": "^7.1.5",
+    "babel-root-slash-import": "^1.1.0",
+    "file-loader": "^2.0.0",
+    "graphql": "^14.0.2",
+    "graphql-tag": "^2.9.2",
+    "react": "^16.4.1",
+    "react-apollo": "^2.2.4",
+    "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "0.9.x",
+    "redux": "^4.0.0",
+    "source-map-loader": "^0.2.3",
+    "ts-loader": "^4.4.2",
+    "typescript": "^2.9.2",
+    "url-loader": "^1.1.1"
+  },
+  "devDependencies": {
+    "webpack": "^4.16.2",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
+  },
+  "scripts": {
+    "watch": "webpack --watch-poll --watch --mode=development",
+    "build": "webpack",
+    "start": "webpack-dev-server"
+  }
+}

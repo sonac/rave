@@ -1,0 +1,21 @@
+.poster_list {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: stretch;
+    height: 100%;
+}
+
+.poster {
+    margin-left: 5px;
+}
+
+img {
+    height: 200px;
+    width: 160px;
+}
+
+img:hover {
+    border: 3px solid white;
+    border-radius: 3px;
+}

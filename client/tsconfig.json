@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "target": "ES6",
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": "src",
+        "sourceMap": true,
+        "jsx": "react",
+        "strict": false
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
