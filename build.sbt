@@ -10,9 +10,8 @@ lazy val root = (project in file("."))
       version      := "0.1.0",
       scalaVersion := "2.11.11"
     )),
-    name := "sc-bi",
+    name := "rave",
     resolvers ++= Seq(
-      "ExasolMavenRepository" at "https://maven.exasol.com/artifactory/exasol-releases",
       Resolver.bintrayRepo("hseeberger", "maven")
   ),
     parallelExecution in Test := false,

@@ -1,9 +1,43 @@
+html {
+    background: #354560;
+}
+
+.home {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    color: white;
+    border-style: solid;
+}
+
+.auth {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+    color: white;
+    border-style: solid;
+}
+
+.userWrapper {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+    color: white;
+}
+
+.logout {
+    border-style: solid;
+    border-radius: 5px;
+}
+
+.body {
+    grid-column: 1 / 4;
+    grid-row: 2 / 3;
+}
+
+h3 {
+    color: white;
+}
+
 .app {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    overflow: auto;
-    background: rgb(66, 93, 119);
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+    grid-template-rows: 1fr 6fr;
 }

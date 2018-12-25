@@ -25,7 +25,7 @@ trait UserAuth {
   private val config = ConfigFactory.load()
   private val secret = config.getString("secret")
 
-  object server extends DAO
+  object dbServer extends DAO
 
   private def baseDecode(valueToDecode: String): Try[String] = {
     Jwt.decodeRaw(valueToDecode, secret, Seq(JwtAlgorithm.HS256))
@@ -38,7 +38,7 @@ trait UserAuth {
   }
 
   def authenticate(username: String, password: String): Future[Option[UserWithToken]] = {
-    server.getUser(username, baseEncode(password)).map{
+    dbServer.getUser(username, baseEncode(password)).map{
       case Some(u) => Some(UserWithToken(u.username, u.eMail, u.createdAt, baseEncode(username)))
       case None => None
     }
@@ -46,7 +46,7 @@ trait UserAuth {
 
   def authorize(token: String): Future[Option[User]] = {
     baseDecode(token) match {
-      case Success(value) => server.getUserByUsername(value)
+      case Success(value) => dbServer.getUserByUsername(value)
       case Failure(exception) =>
         println(exception)
         Future(None)

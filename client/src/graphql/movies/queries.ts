@@ -43,15 +43,6 @@ export const UPDATE_USER_INPUT = gql`
               updateUserInput(index: $index, value: $value) @client
             }`;
 
-export const ADD_USER = gql`
-            mutation addUser($username: String!, $password: String!, $eMail: String!) {
-              addUser(username: $username, password: $password, email: $eMail) {
-                username
-                eMail
-                token
-              }
-            }`; 
-
 export const GET_CURRENT_USER = gql`
             query GetCurrentUser {
               currentUser @client {
@@ -71,14 +62,6 @@ export const GET_CURRENT_LOGIN = gql`
               loginInput @client {
                 username
                 password
-              }
-            }`;
-
-export const LOGIN = gql`
-            query Authenticate($username: String!, $password: String!){
-              authenticate(username: $username, password: $password) {
-                username
-                token
               }
             }`;
 

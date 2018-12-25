@@ -17,7 +17,7 @@ const babelLoader = {
 const webpack = require('webpack');
 
 module.exports = {
-    entry: path.resolve(__dirname, 'src/index.tsx'),
+    entry: ['babel-polyfill', path.resolve(__dirname, 'src/index.tsx')],
     output: {
         filename: 'bundle.js',
         path: path.join(__dirname, '/../public')

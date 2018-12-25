@@ -1,5 +1,6 @@
 import gql from "graphql-tag";
-import { LOGIN, GET_CURRENT_USER } from './movies/queries'
+import {  GET_CURRENT_USER } from './movies/queries'
+import client from './apollo'
 
 export const defaults = {
   movieInput: {
@@ -78,8 +79,15 @@ export const resolvers = {
       cache.writeQuery({ query: GET_CURRENT_LOGIN, data: newData })
       return null;
     },
-    updateCurrentUser: (_, { username, password }, { cache }) => {
-      const login = cache.readQuery({ query: LOGIN, variables: {username: username, password: password} })
+    updateCurrentUser: (proxy, { username, password }, { cache }) => {
+      const LOGIN = gql`
+            query Authenticate($username: String!, $password: String!){
+              authenticate(username: $username, password: $password) {
+                username
+                token
+              }
+            }`
+      const login = proxy.readQuery({ query: LOGIN, variables: {username: username, password: password} })
       if (login === null) {
         cache.writeQuery({
           query: gql`

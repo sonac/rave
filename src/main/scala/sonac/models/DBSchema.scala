@@ -14,7 +14,7 @@ object DBSchema {
     ts => DateTime(ts.getTime)
   )
 
-  class MovieTable(tag: Tag) extends Table[Movie](tag, Some("pg"),"movies") {
+  class MovieTable(tag: Tag) extends Table[Movie](tag, Some("rave"),"movies") {
     def id = column[Int]("id", O.PrimaryKey, O.AutoInc)
     def title = column[String]("title")
     def genres = column[String]("genres")
@@ -24,16 +24,16 @@ object DBSchema {
     def * = (id, title, genres, imdb, posterLink, createdAt).mapTo[Movie]
   }
 
-  class UserTable(tag: Tag) extends Table[User](tag, Some("pg"), "users") {
+  class UserTable(tag: Tag) extends Table[User](tag, Some("rave"), "users") {
     def id = column[Int]("id", O.PrimaryKey, O.AutoInc)
     def username = column[String]("username")
     def password = column[String]("password")
-    def eMail = column[String]("email")
+    def email = column[String]("email")
     def createdAt = column[DateTime]("created_at")
-    def * = (id, username, password, eMail, createdAt).mapTo[User]
+    def * = (id, username, password, email, createdAt).mapTo[User]
   }
 
-  class UserMoviesTable(tag: Tag) extends Table[UserMovies](tag, Some("pg"), "user_movies") {
+  class UserMoviesTable(tag: Tag) extends Table[UserMovies](tag, Some("rave"), "user_movies") {
     def id = column[Int]("id", O.PrimaryKey, O.AutoInc)
     def userId = column[Int]("user_id")
     def movieId = column[Int]("movie_id")

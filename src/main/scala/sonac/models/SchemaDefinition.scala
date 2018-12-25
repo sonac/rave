@@ -2,7 +2,7 @@ package sonac.models
 
 import akka.http.scaladsl.model.DateTime
 import sangria.ast.StringValue
-import sangria.execution.{ExceptionHandler, HandledException}
+import sangria.execution.{ExceptionHandler, HandledException, FieldTag}
 import sangria.execution.deferred._
 import sangria.schema.{Field, ListType, ObjectType}
 import sangria.schema._
@@ -13,6 +13,8 @@ import sonac.service.{AuthenticationException, AuthorisationException, UserAuth,
 object SchemaDefinition {
 
   class QueryContext extends DAO with UserAuth
+
+  case object Authorized extends FieldTag
 
   case object DateTimeCoerceViolation extends Violation {
     override def errorMessage: String = "Error parsing DateTime"
@@ -66,9 +68,6 @@ object SchemaDefinition {
       Field("userMovies", ListType(Movie),
         arguments = ID :: Nil,
         resolve = ctx => ctx.ctx.getUserMovies(ctx arg ID)),
-      Field("authenticate", OptionType(UserWithToken),
-        arguments = Username :: Password :: Nil,
-        resolve = ctx => ctx.ctx.authenticate(ctx arg Username, ctx arg Password)),
       Field("authorize", OptionType(User),
         arguments = Token :: Nil,
         resolve = ctx => ctx.ctx.authorize(ctx arg Token))
@@ -79,10 +78,14 @@ object SchemaDefinition {
     "Mutation", fields[QueryContext, Unit](
       Field("addMovie", Movie,
         arguments = Title :: Genre :: IMDBLink :: Nil,
+        tags = Authorized :: Nil,
         resolve = ctx => ctx.ctx.addMovie(ctx.arg(Title) , ctx.arg(Genre), ctx.arg(IMDBLink))),
       Field("addUser", UserWithToken,
         arguments = Username :: Password :: EMail :: Nil,
-        resolve = ctx => ctx.ctx.addUser(ctx.arg(Username) , ctx.ctx.baseEncode(ctx.arg(Password)), ctx.arg(EMail)))
+        resolve = ctx => ctx.ctx.addUser(ctx.arg(Username) , ctx.ctx.baseEncode(ctx.arg(Password)), ctx.arg(EMail))),
+      Field("authenticate", OptionType(UserWithToken),
+        arguments = Username :: Password :: Nil,
+        resolve = ctx => ctx.ctx.authenticate(ctx arg Username, ctx arg Password))
     )
   )
 
