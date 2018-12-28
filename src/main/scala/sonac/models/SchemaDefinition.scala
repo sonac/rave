@@ -2,7 +2,7 @@ package sonac.models
 
 import akka.http.scaladsl.model.DateTime
 import sangria.ast.StringValue
-import sangria.execution.{ExceptionHandler, HandledException}
+import sangria.execution.{ExceptionHandler, HandledException, FieldTag}
 import sangria.execution.deferred._
 import sangria.schema.{Field, ListType, ObjectType}
 import sangria.schema._
@@ -14,14 +14,12 @@ object SchemaDefinition {
 
   class QueryContext extends DAO with UserAuth
 
+  case object Authorized extends FieldTag
+
   case object DateTimeCoerceViolation extends Violation {
     override def errorMessage: String = "Error parsing DateTime"
   }
 
-  val errorHandler = ExceptionHandler {
-    case (m, AuthenticationException(message)) ⇒ HandledException(message)
-    case (m, AuthorisationException(message)) ⇒ HandledException(message)
-  }
 
 
   implicit val GraphQLDateTime: ScalarType[DateTime] = ScalarType[DateTime]("DateTime",
@@ -64,11 +62,8 @@ object SchemaDefinition {
       Field("users", ListType(User),
         resolve = ctx => ctx.ctx.getAllUsers),
       Field("userMovies", ListType(Movie),
-        arguments = ID :: Nil,
-        resolve = ctx => ctx.ctx.getUserMovies(ctx arg ID)),
-      Field("authenticate", OptionType(UserWithToken),
-        arguments = Username :: Password :: Nil,
-        resolve = ctx => ctx.ctx.authenticate(ctx arg Username, ctx arg Password)),
+        arguments = Username :: Nil,
+        resolve = ctx => ctx.ctx.getUserMovies(ctx arg Username)),
       Field("authorize", OptionType(User),
         arguments = Token :: Nil,
         resolve = ctx => ctx.ctx.authorize(ctx arg Token))
@@ -79,10 +74,14 @@ object SchemaDefinition {
     "Mutation", fields[QueryContext, Unit](
       Field("addMovie", Movie,
         arguments = Title :: Genre :: IMDBLink :: Nil,
+        tags = Authorized :: Nil,
         resolve = ctx => ctx.ctx.addMovie(ctx.arg(Title) , ctx.arg(Genre), ctx.arg(IMDBLink))),
       Field("addUser", UserWithToken,
         arguments = Username :: Password :: EMail :: Nil,
-        resolve = ctx => ctx.ctx.addUser(ctx.arg(Username) , ctx.ctx.baseEncode(ctx.arg(Password)), ctx.arg(EMail)))
+        resolve = ctx => ctx.ctx.register(ctx.arg(Username) , ctx.ctx.baseEncode(ctx.arg(Password)), ctx.arg(EMail))),
+      Field("authenticate", OptionType(UserWithToken),
+        arguments = EMail :: Password :: Nil,
+        resolve = ctx => ctx.ctx.authenticate(ctx arg EMail, ctx arg Password))
     )
   )
 

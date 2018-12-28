@@ -19,3 +19,9 @@ img:hover {
     border: 3px solid white;
     border-radius: 3px;
 }
+
+.notLogged {
+    font-size: 22px;
+    color: black;
+    vertical-align: middle;
+}

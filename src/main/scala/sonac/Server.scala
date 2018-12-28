@@ -2,7 +2,6 @@ package sonac
 
 import scala.util.control.NonFatal
 import scala.util.{Failure, Success}
-
 import sangria.ast.Document
 import sangria.execution.{ErrorWithResolver, Executor, QueryAnalysisError}
 import sangria.parser.{QueryParser, SyntaxError}
@@ -13,7 +12,7 @@ import akka.http.scaladsl.Http
 import akka.http.scaladsl.model.StatusCodes._
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.model.MediaTypes._
-import akka.http.scaladsl.model.headers.Cookie
+import akka.http.scaladsl.model.headers.HttpCookie
 import akka.http.scaladsl.server._
 import akka.stream.ActorMaterializer
 import de.heikoseeberger.akkahttpcirce.ErrorAccumulatingCirceSupport._
@@ -21,14 +20,13 @@ import io.circe._
 import io.circe.optics.JsonPath._
 import io.circe.parser._
 import common.GraphQLRequestUnmarshaller._
-
 import sonac.models.SchemaDefinition._
 import sonac.models.SchemaDefinition
-import sonac.service.IMDBapi
+import sonac.service.{IMDBapi, UserAuth}
 
 import scala.io.StdIn
 
-object Server extends App {
+object Server extends App with UserAuth {
 
   implicit val system: ActorSystem = ActorSystem("exa-server")
   implicit val materializer: ActorMaterializer = ActorMaterializer()
@@ -39,7 +37,8 @@ object Server extends App {
   def executeGraphQL(query: Document, operationName: Option[String], variables: Json) = {
     complete(Executor.execute(SchemaDefinition.DBSchema, query, new QueryContext,
       variables = if (variables.isNull) Json.obj() else variables,
-      operationName = operationName)
+      operationName = operationName,
+      exceptionHandler = errorHandler)
       .map(OK -> _)
       .recover {
         case error: QueryAnalysisError => BadRequest -> error.resolveError
@@ -133,7 +132,44 @@ object Server extends App {
     } ~
     path("images" / Segment ) { img =>
       getFromFile(s"public/images/$img")
+    } ~
+  path("check-auth") {
+    get {
+      optionalCookie("auth-token") {
+        case Some(token) => onComplete(authorize(token.value)) {
+          case Success(optUser) => optUser match {
+            case Some(user) => complete(user.username)
+            case None => complete("")
+          }
+          case Failure(ex) => {
+            println(ex)
+            complete("")
+          }
+        }
+        case None => complete("")
+      }
     }
+  } ~
+  path("set-cookie") {
+    get {
+      println("asd")
+      parameter('token.as[String]) { token =>
+        setCookie(HttpCookie(name = "auth-token", value = token)) {
+          println(token)
+          getFromFile("public/index.html")
+        }
+      }
+    }
+  } ~
+  path("logout") {
+    get {
+      deleteCookie("auth-token") {
+        complete()
+      }
+    }
+  }
+
+
 
   //print(IMDBapi.get("tt4779682"))
 

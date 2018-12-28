@@ -1,0 +1,58 @@
+ a {
+    color: white;
+}
+
+h4 {
+    color: white;
+}
+
+input {
+    width: 300px;
+    height: 30px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+button {
+  background-color: transparent; /* Green */
+  border-style: solid;
+  color: white;
+  width: 150px;
+  border-radius: 20px;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.loginForm {
+    grid-row: 2 / 3;
+}
+
+.button {
+    grid-row: 3 / 4;
+}
+
+.pointerButton {
+    display:inline-block;
+    color: white;
+    border-style: solid;
+    grid-row: 4 / 5;
+}
+
+.pointerButton:hover {
+    cursor: pointer;
+}
+
+.wrapper {
+    display: grid;
+    grid-auto-columns: 300px;
+    grid-auto-rows: 2fr 4fr 1fr 1fr;
+    grid-gap: 5px;
+}
+
+.errorMsg {
+    color: red;
+}

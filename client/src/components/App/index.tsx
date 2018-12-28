@@ -1,25 +1,30 @@
 import * as React from 'react';
 import { Component } from 'react';
+import { RouteProps } from 'react-router';
 import { Link, BrowserRouter as Router } from 'react-router-dom';
 import Body from 'components/Body';
+import Header from 'components/Header';
+import client from '../../graphql/apollo';
 
 const styles = require('./styles.css');
 
-export default class App extends Component {
+interface Props {}
 
-    componentDidMount() {
-    }
+interface State {
+    username: string
+}
+
+export default class App extends Component<Props & RouteProps, State> {
 
     render() {
         return (
             <Router>
                 <div className={styles.app}>
-                    <Link to='/'><h3>Home</h3></Link>
-                    <Link to='/registration'><h4>Register</h4></Link>
-                    <Link to='/login'><h4>Login</h4></Link>
-                    <Body/>
+                    <div className={styles.header}><Header/></div>
+                    <div className={styles.body}><Body/></div>
                 </div>
             </Router>
         );
     }
+
 }
