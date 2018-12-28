@@ -20,10 +20,6 @@ object SchemaDefinition {
     override def errorMessage: String = "Error parsing DateTime"
   }
 
-  val errorHandler = ExceptionHandler {
-    case (m, AuthenticationException(message)) ⇒ HandledException(message)
-    case (m, AuthorisationException(message)) ⇒ HandledException(message)
-  }
 
 
   implicit val GraphQLDateTime: ScalarType[DateTime] = ScalarType[DateTime]("DateTime",
@@ -66,8 +62,8 @@ object SchemaDefinition {
       Field("users", ListType(User),
         resolve = ctx => ctx.ctx.getAllUsers),
       Field("userMovies", ListType(Movie),
-        arguments = ID :: Nil,
-        resolve = ctx => ctx.ctx.getUserMovies(ctx arg ID)),
+        arguments = Username :: Nil,
+        resolve = ctx => ctx.ctx.getUserMovies(ctx arg Username)),
       Field("authorize", OptionType(User),
         arguments = Token :: Nil,
         resolve = ctx => ctx.ctx.authorize(ctx arg Token))
@@ -82,10 +78,10 @@ object SchemaDefinition {
         resolve = ctx => ctx.ctx.addMovie(ctx.arg(Title) , ctx.arg(Genre), ctx.arg(IMDBLink))),
       Field("addUser", UserWithToken,
         arguments = Username :: Password :: EMail :: Nil,
-        resolve = ctx => ctx.ctx.addUser(ctx.arg(Username) , ctx.ctx.baseEncode(ctx.arg(Password)), ctx.arg(EMail))),
+        resolve = ctx => ctx.ctx.register(ctx.arg(Username) , ctx.ctx.baseEncode(ctx.arg(Password)), ctx.arg(EMail))),
       Field("authenticate", OptionType(UserWithToken),
-        arguments = Username :: Password :: Nil,
-        resolve = ctx => ctx.ctx.authenticate(ctx arg Username, ctx arg Password))
+        arguments = EMail :: Password :: Nil,
+        resolve = ctx => ctx.ctx.authenticate(ctx arg EMail, ctx arg Password))
     )
   )
 

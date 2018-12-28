@@ -7,6 +7,8 @@ import DBSchema._
 import sonac.common.PostgresConnector
 import sonac.service.UserWithToken
 
+import scala.util.{Failure, Success, Try}
+
 trait DAO extends PostgresConnector {
 
   private val movieTable: TableQuery[MovieTable] = TableQuery[MovieTable]
@@ -32,8 +34,8 @@ trait DAO extends PostgresConnector {
     db.run(movieTable.result)
   }
 
-  def addUser(username: String, password: String, eMail: String): Future[UserWithToken] = {
-    db.run(insertUserTable += User(0, username, password, eMail)).map(UserWithToken(_))
+  def addUser(username: String, eMail: String, password: String): Future[Try[User]] = {
+    db.run((insertUserTable += User(0, username, password, eMail)).asTry)
   }
 
   def deleteUser(id: Int): Future[Boolean] = {
@@ -48,17 +50,18 @@ trait DAO extends PostgresConnector {
     db.run(userTable.filter(_.username === username).result.headOption)
   }
 
-  def getUser(username: String, password: String): Future[Option[User]] = {
-    db.run(userTable.filter(u => u.username === username && u.password === password).result.headOption)
+  def getUser(email: String, password: String): Future[Option[User]] = {
+    db.run(userTable.filter(u => u.email === email && u.password === password).result.headOption)
   }
 
   def getAllUsers: Future[Seq[User]] = {
     db.run(userTable.result)
   }
 
-  def getUserMovies(uId: Int): Future[Seq[Movie]] = {
-    db.run(userMoviesTable.filter(_.userId === uId)
-      .join(movieTable).on(_.movieId === _.id)
+  def getUserMovies(username: String): Future[Seq[Movie]] = {
+    db.run(userTable.filter(_.username === username)
+      .join(userMoviesTable).on(_.id === _.userId)
+      .join(movieTable).on(_._2.movieId === _.id)
       .result).map(_.map( _._2))
   }
 

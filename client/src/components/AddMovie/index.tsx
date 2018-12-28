@@ -1,22 +1,10 @@
 import * as React from 'react';
-import { Component } from "react";
 import { Query, Mutation } from 'react-apollo';
 import { GET_CURRENT_MOVIE, UPDATE_CURRENT_MOVIE, ADD_MOVIE } from '../../graphql/movies/queries';
 
 const styles = require('./styles.css');
 
-
-
-
 const AddMovie = () => {
-
-    function handleChange(e, inp) {
-        console.log(inp);
-    }
-    
-    function handleClick() {
-        console.log('click')
-    }
 
     return (
         <Query query={GET_CURRENT_MOVIE}>
@@ -24,7 +12,6 @@ const AddMovie = () => {
                 <Mutation mutation={UPDATE_CURRENT_MOVIE}>
                     { updateCurrentMovie =>
                         <div className={styles.addMovie}>
-                    {console.log(data)}
                             <div className={styles.inputs}>
                                 <input type='text' placeholder='Title' onChange={(e) => {updateCurrentMovie({
                                                                                     variables: {

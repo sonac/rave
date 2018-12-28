@@ -11,9 +11,9 @@ export default function Body() {
        return  (
             <div className={styles.body}>
                 <Switch>
-                    <Route exact path='/' render={(props) => <UserMovies {...props} userId={1} />} />
-                    <Route exact path='/add-movie' component={AddMovie} />
-                    <Route exact path='/login' component={Login} />
+                    <Route exact path='/' render={(props) => <UserMovies/>} />
+                    <Route path='/add-movie' component={AddMovie} />
+                    <Route path='/login' component={Login} />
                 </Switch>
             </div>
         );

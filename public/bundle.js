@@ -18320,7 +18320,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "html {\n    background: #354560;\n}\n\n.home_10A4q {\n    grid-column: 1 / 2;\n    grid-row: 1 / 2;\n    color: white;\n    border-style: solid;\n}\n\n.auth_2_WqZ {\n    grid-column: 3 / 4;\n    grid-row: 1 / 2;\n    color: white;\n    border-style: solid;\n}\n\n.userWrapper_3K-qS {\n    grid-column: 3 / 4;\n    grid-row: 1 / 2;\n    color: white;\n}\n\n.logout_25ABy {\n    border-style: solid;\n    border-radius: 5px;\n}\n\n.body_3ORQ1 {\n    grid-column: 1 / 4;\n    grid-row: 2 / 3;\n}\n\nh3 {\n    color: white;\n}\n\n.app_4Dync {\n    display: grid;\n    grid-template-columns: 1fr 5fr 1fr;\n    grid-template-rows: 1fr 6fr;\n}", ""]);
+exports.push([module.i, "html {\n    background: #354560;\n}\n\n.home_10A4q {\n    grid-column: 1 / 2;\n    grid-row: 1 / 2;\n    color: white;\n    border-style: solid;\n}\n\n.auth_2_WqZ {\n    grid-column: 3 / 4;\n    grid-row: 1 / 2;\n    color: white;\n    border-style: solid;\n}\n\n.userWrapper_3K-qS {\n    grid-column: 3 / 4;\n    grid-row: 1 / 2;\n    color: white;\n}\n\n.logout_25ABy {\n    border-style: solid;\n    border-radius: 5px;\n}\n\n.logout_25ABy:hover {\n    cursor: pointer;\n}\n\n.body_3ORQ1 {\n    grid-column: 1 / 4;\n    grid-row: 2 / 3;\n}\n\nh3 {\n    color: white;\n}\n\n.app_4Dync {\n    display: grid;\n    grid-template-columns: 1fr 5fr 1fr;\n    grid-template-rows: 1fr 6fr;\n}", ""]);
 
 // exports
 exports.locals = {
@@ -18353,6 +18353,30 @@ exports.push([module.i, "", ""]);
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./src/components/Header/styles.css":
+/*!******************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--7-1!./src/components/Header/styles.css ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")();
+// imports
+
+
+// module
+exports.push([module.i, ".home_3Bocx {\r\n    grid-column: 1 / 2;\r\n    grid-row: 1 / 2;\r\n    color: white;\r\n    border-style: solid;\r\n}\r\n\r\n.auth_3XMHO {\r\n    grid-column: 3 / 4;\r\n    grid-row: 1 / 2;\r\n    color: white;\r\n    border-style: solid;\r\n}\r\n\r\n.userWrapper_2poEt {\r\n    grid-column: 3 / 4;\r\n    grid-row: 1 / 2;\r\n    color: white;\r\n}\r\n\r\n.logout_kG51w {\r\n    border-style: solid;\r\n    border-radius: 5px;\r\n}\r\n\r\n.logout_kG51w:hover {\r\n    cursor: pointer;\r\n}\r\n\r\nh3 {\r\n    color: white;\r\n}\r\n", ""]);
+
+// exports
+exports.locals = {
+	"home": "home_3Bocx",
+	"auth": "auth_3XMHO",
+	"userWrapper": "userWrapper_2poEt",
+	"logout": "logout_kG51w"
+};
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js?!./src/components/Login/styles.css":
 /*!*****************************************************************************!*\
   !*** ./node_modules/css-loader??ref--7-1!./src/components/Login/styles.css ***!
@@ -18365,14 +18389,15 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, " a {\r\n    color: white;\r\n}\r\n\r\nh4 {\r\n    color: white;\r\n}\r\n\r\ninput {\r\n    width: 300px;\r\n    height: 30px;\r\n    border-radius: 10px;\r\n    margin-bottom: 5px;\r\n}\r\n\r\nbutton {\r\n  background-color: transparent; /* Green */\r\n  border-style: solid;\r\n  color: white;\r\n  width: 150px;\r\n  border-radius: 20px;\r\n  padding: 15px 32px;\r\n  text-align: center;\r\n  text-decoration: none;\r\n  display: inline-block;\r\n  font-size: 16px;\r\n  font-weight: bold;\r\n}\r\n\r\n.loginForm_3wRNO {\r\n    grid-row: 2 / 3;\r\n}\r\n\r\n.button_2x9oA {\r\n    grid-row: 3 / 4;\r\n}\r\n\r\n.pointerButton_2Qn-g {\r\n    display:inline-block;\r\n    color: white;\r\n    border-style: solid;\r\n    grid-row: 4 / 5;\r\n}\r\n\r\n.pointerButton_2Qn-g:hover {\r\n    cursor: pointer;\r\n}\r\n\r\n.wrapper_3S-Ft {\r\n    display: grid;\r\n    grid-auto-columns: 300px;\r\n    grid-auto-rows: 2fr 4fr 1fr 1fr;\r\n    grid-gap: 5px;\r\n}", ""]);
+exports.push([module.i, " a {\r\n    color: white;\r\n}\r\n\r\nh4 {\r\n    color: white;\r\n}\r\n\r\ninput {\r\n    width: 300px;\r\n    height: 30px;\r\n    border-radius: 10px;\r\n    margin-bottom: 5px;\r\n}\r\n\r\nbutton {\r\n  background-color: transparent; /* Green */\r\n  border-style: solid;\r\n  color: white;\r\n  width: 150px;\r\n  border-radius: 20px;\r\n  padding: 15px 32px;\r\n  text-align: center;\r\n  text-decoration: none;\r\n  display: inline-block;\r\n  font-size: 16px;\r\n  font-weight: bold;\r\n}\r\n\r\n.loginForm_3wRNO {\r\n    grid-row: 2 / 3;\r\n}\r\n\r\n.button_2x9oA {\r\n    grid-row: 3 / 4;\r\n}\r\n\r\n.pointerButton_2Qn-g {\r\n    display:inline-block;\r\n    color: white;\r\n    border-style: solid;\r\n    grid-row: 4 / 5;\r\n}\r\n\r\n.pointerButton_2Qn-g:hover {\r\n    cursor: pointer;\r\n}\r\n\r\n.wrapper_3S-Ft {\r\n    display: grid;\r\n    grid-auto-columns: 300px;\r\n    grid-auto-rows: 2fr 4fr 1fr 1fr;\r\n    grid-gap: 5px;\r\n}\r\n\r\n.errorMsg_1xmMV {\r\n    color: red;\r\n}", ""]);
 
 // exports
 exports.locals = {
 	"loginForm": "loginForm_3wRNO",
 	"button": "button_2x9oA",
 	"pointerButton": "pointerButton_2Qn-g",
-	"wrapper": "wrapper_3S-Ft"
+	"wrapper": "wrapper_3S-Ft",
+	"errorMsg": "errorMsg_1xmMV"
 };
 
 /***/ }),
@@ -18389,12 +18414,13 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".poster_list_2fLlJ {\n    display: flex;\n    flex-direction: row;\n    justify-content: left;\n    align-items: stretch;\n    height: 100%;\n}\n\n.poster_g1SLE {\n    margin-left: 5px;\n}\n\nimg {\n    height: 200px;\n    width: 160px;\n}\n\nimg:hover {\n    border: 3px solid white;\n    border-radius: 3px;\n}", ""]);
+exports.push([module.i, ".poster_list_2fLlJ {\n    display: flex;\n    flex-direction: row;\n    justify-content: left;\n    align-items: stretch;\n    height: 100%;\n}\n\n.poster_g1SLE {\n    margin-left: 5px;\n}\n\nimg {\n    height: 200px;\n    width: 160px;\n}\n\nimg:hover {\n    border: 3px solid white;\n    border-radius: 3px;\n}\n\n.notLogged_daaDG {\n    font-size: 22px;\n    color: black;\n    vertical-align: middle;\n}", ""]);
 
 // exports
 exports.locals = {
 	"poster_list": "poster_list_2fLlJ",
-	"poster": "poster_g1SLE"
+	"poster": "poster_g1SLE",
+	"notLogged": "notLogged_daaDG"
 };
 
 /***/ }),
@@ -69296,17 +69322,11 @@ var react_apollo_1 = __webpack_require__(/*! react-apollo */ "./node_modules/rea
 var queries_1 = __webpack_require__(/*! ../../graphql/movies/queries */ "./src/graphql/movies/queries.ts");
 var styles = __webpack_require__(/*! ./styles.css */ "./src/components/AddMovie/styles.css");
 var AddMovie = function AddMovie() {
-    function handleChange(e, inp) {
-        console.log(inp);
-    }
-    function handleClick() {
-        console.log('click');
-    }
     return React.createElement(react_apollo_1.Query, { query: queries_1.GET_CURRENT_MOVIE }, function (_ref) {
         var data = _ref.data,
             client = _ref.client;
         return React.createElement(react_apollo_1.Mutation, { mutation: queries_1.UPDATE_CURRENT_MOVIE }, function (updateCurrentMovie) {
-            return React.createElement("div", { className: styles.addMovie }, console.log(data), React.createElement("div", { className: styles.inputs }, React.createElement("input", { type: 'text', placeholder: 'Title', onChange: function onChange(e) {
+            return React.createElement("div", { className: styles.addMovie }, React.createElement("div", { className: styles.inputs }, React.createElement("input", { type: 'text', placeholder: 'Title', onChange: function onChange(e) {
                     updateCurrentMovie({
                         variables: {
                             index: 'title',
@@ -69384,43 +69404,22 @@ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 var Body_1 = __webpack_require__(/*! components/Body */ "./src/components/Body/index.tsx");
+var Header_1 = __webpack_require__(/*! components/Header */ "./src/components/Header/index.tsx");
 var styles = __webpack_require__(/*! ./styles.css */ "./src/components/App/styles.css");
 
 var App = function (_react_1$Component) {
     _inherits(App, _react_1$Component);
 
-    function App(props) {
+    function App() {
         _classCallCheck(this, App);
 
-        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
-
-        _this.state = {
-            username: ''
-        };
-        _this.logout = _this.logout.bind(_this);
-        return _this;
+        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
     }
 
     _createClass(App, [{
-        key: "componentDidMount",
-        value: function componentDidMount() {
-            var _this2 = this;
-
-            fetch('/check-auth').then(function (response) {
-                return response.json();
-            }).then(function (data) {
-                return _this2.setState({ username: data });
-            });
-        }
-    }, {
-        key: "logout",
-        value: function logout() {
-            fetch('/logout').then(this.props.history.push('/'));
-        }
-    }, {
         key: "render",
         value: function render() {
-            return React.createElement(react_router_dom_1.BrowserRouter, null, React.createElement("div", { className: styles.app }, React.createElement("div", { className: styles.home }, React.createElement(react_router_dom_1.Link, { to: '/' }, React.createElement("h3", null, "Home"))), this.state.username ? React.createElement("div", { className: styles.userWrapper }, React.createElement("div", { className: styles.welcome }, React.createElement("h3", null, "Welcome, ", this.state.username)), React.createElement("div", { className: styles.logout, onClick: this.logout }, React.createElement("h4", null, "Logout?"))) : React.createElement("div", { className: styles.auth }, React.createElement(react_router_dom_1.Link, { to: '/login' }, React.createElement("h3", null, "Sign Up"))), React.createElement("div", { className: styles.body }, React.createElement(Body_1.default, null))));
+            return React.createElement(react_router_dom_1.BrowserRouter, null, React.createElement("div", { className: styles.app }, React.createElement("div", { className: styles.header }, React.createElement(Header_1.default, null)), React.createElement("div", { className: styles.body }, React.createElement(Body_1.default, null))));
         }
     }]);
 
@@ -69470,8 +69469,8 @@ var Login_1 = __webpack_require__(/*! components/Login */ "./src/components/Logi
 var styles = __webpack_require__(/*! ./styles.css */ "./src/components/Body/styles.css");
 function Body() {
     return React.createElement("div", { className: styles.body }, React.createElement(react_router_dom_1.Switch, null, React.createElement(react_router_dom_1.Route, { exact: true, path: '/', render: function render(props) {
-            return React.createElement(UserMovies_1.default, Object.assign({}, props, { userId: 1 }));
-        } }), React.createElement(react_router_dom_1.Route, { exact: true, path: '/add-movie', component: AddMovie_1.default }), React.createElement(react_router_dom_1.Route, { exact: true, path: '/login', component: Login_1.default })));
+            return React.createElement(UserMovies_1.default, null);
+        } }), React.createElement(react_router_dom_1.Route, { path: '/add-movie', component: AddMovie_1.default }), React.createElement(react_router_dom_1.Route, { path: '/login', component: Login_1.default })));
 }
 exports.default = Body;
 
@@ -69497,6 +69496,167 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./src/components/Header/index.tsx":
+/*!*****************************************!*\
+  !*** ./src/components/Header/index.tsx ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var __awaiter = undefined && undefined.__awaiter || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) {
+            try {
+                step(generator.next(value));
+            } catch (e) {
+                reject(e);
+            }
+        }
+        function rejected(value) {
+            try {
+                step(generator["throw"](value));
+            } catch (e) {
+                reject(e);
+            }
+        }
+        function step(result) {
+            result.done ? resolve(result.value) : new P(function (resolve) {
+                resolve(result.value);
+            }).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+var react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+var Login_1 = __webpack_require__(/*! components/Login */ "./src/components/Login/index.tsx");
+var apollo_1 = __webpack_require__(/*! ../../graphql/apollo */ "./src/graphql/apollo.ts");
+var react_apollo_1 = __webpack_require__(/*! react-apollo */ "./node_modules/react-apollo/react-apollo.browser.umd.js");
+var styles = __webpack_require__(/*! ./styles.css */ "./src/components/Header/styles.css");
+
+var Header = function (_react_1$Component) {
+    _inherits(Header, _react_1$Component);
+
+    function Header(props) {
+        _classCallCheck(this, Header);
+
+        var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this, props));
+
+        _this.updateCacheAfterAuth = function (store, userData) {
+            return __awaiter(_this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+                var data, newUser;
+                return regeneratorRuntime.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                data = store.readQuery({ query: Login_1.GET_CURRENT_USER });
+                                newUser = {
+                                    currentUser: Object.assign({}, data.currentUser, { username: userData })
+                                };
+
+                                store.writeQuery({ query: Login_1.GET_CURRENT_USER, data: newUser });
+
+                            case 3:
+                            case "end":
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, this);
+            }));
+        };
+        _this.clearUserFromCache = function (store) {
+            var data = store.readQuery({ query: Login_1.GET_CURRENT_USER });
+            var emptyUser = {
+                currentUser: Object.assign({}, data.currentUser, { username: '', token: '' })
+            };
+            apollo_1.default.writeQuery({ query: Login_1.GET_CURRENT_USER, data: emptyUser });
+        };
+        _this.state = {
+            username: ''
+        };
+        _this.logout = _this.logout.bind(_this);
+        return _this;
+    }
+
+    _createClass(Header, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            fetch('/check-auth').then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                _this2.setState({ username: data });
+                _this2.updateCacheAfterAuth(apollo_1.default, data);
+            });
+        }
+    }, {
+        key: "logout",
+        value: function logout() {
+            var _this3 = this;
+
+            fetch('/logout').then(function () {
+                _this3.setState({ username: '' });
+                _this3.clearUserFromCache(apollo_1.default);
+            });
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _this4 = this;
+
+            var username = this.state.username;
+            return React.createElement("div", { className: styles.app }, React.createElement("div", { className: styles.home }, React.createElement(react_router_dom_1.Link, { to: '/' }, React.createElement("h3", null, "Home"))), React.createElement(react_apollo_1.Query, { query: Login_1.GET_CURRENT_USER }, function (_ref) {
+                var loading = _ref.loading,
+                    error = _ref.error,
+                    data = _ref.data;
+
+                if (!username && !data.currentUser.username) return React.createElement("div", { className: styles.auth }, React.createElement(react_router_dom_1.Link, { to: '/login' }, React.createElement("h3", null, "Sign In")));
+                return React.createElement("div", { className: styles.userWrapper }, React.createElement("div", { className: styles.welcome }, React.createElement("h3", null, "Welcome, ", username ? username : data.currentUser.username)), React.createElement("div", { className: styles.logout, onClick: _this4.logout }, React.createElement("h4", null, "Logout?")));
+            }));
+        }
+    }]);
+
+    return Header;
+}(react_1.Component);
+
+exports.default = Header;
+
+/***/ }),
+
+/***/ "./src/components/Header/styles.css":
+/*!******************************************!*\
+  !*** ./src/components/Header/styles.css ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--7-1!./styles.css */ "./node_modules/css-loader/index.js?!./src/components/Header/styles.css");
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/addStyles.js */ "./node_modules/style-loader/addStyles.js")(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {}
+
+/***/ }),
+
 /***/ "./src/components/Login/index.tsx":
 /*!****************************************!*\
   !*** ./src/components/Login/index.tsx ***!
@@ -69509,8 +69669,9 @@ if(false) {}
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(["\n    mutation addUser($username: String!, $password: String!, $email: String!) {\n        addUser(username: $username, password: $password, email: $email) {\n            token\n        }\n    }\n"], ["\n    mutation addUser($username: String!, $password: String!, $email: String!) {\n        addUser(username: $username, password: $password, email: $email) {\n            token\n        }\n    }\n"]),
-    _templateObject2 = _taggedTemplateLiteral(["\n    mutation Authenticate($username: String!, $password: String!){\n        authenticate(username: $username, password: $password) {\n            token\n        }\n    }\n"], ["\n    mutation Authenticate($username: String!, $password: String!){\n        authenticate(username: $username, password: $password) {\n            token\n        }\n    }\n"]);
+var _templateObject = _taggedTemplateLiteral(["\n    mutation addUser($username: String!, $password: String!, $email: String!) {\n        addUser(username: $username, password: $password, email: $email) {\n            username\n            token\n        }\n    }\n"], ["\n    mutation addUser($username: String!, $password: String!, $email: String!) {\n        addUser(username: $username, password: $password, email: $email) {\n            username\n            token\n        }\n    }\n"]),
+    _templateObject2 = _taggedTemplateLiteral(["\n    mutation authenticate($email: String!, $password: String!){\n        authenticate(email: $email, password: $password) {\n            username\n            token\n        }\n    }\n"], ["\n    mutation authenticate($email: String!, $password: String!){\n        authenticate(email: $email, password: $password) {\n            username\n            token\n        }\n    }\n"]),
+    _templateObject3 = _taggedTemplateLiteral(["\n    query getCurrentUser {\n        currentUser @client {\n        username\n        token\n        }\n    }\n"], ["\n    query getCurrentUser {\n        currentUser @client {\n        username\n        token\n        }\n    }\n"]);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -69548,10 +69709,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var react_apollo_1 = __webpack_require__(/*! react-apollo */ "./node_modules/react-apollo/react-apollo.browser.umd.js");
 var graphql_tag_1 = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/src/index.js");
-var constants_1 = __webpack_require__(/*! ../../constants */ "./src/constants.ts");
 var styles = __webpack_require__(/*! ./styles.css */ "./src/components/Login/styles.css");
 var REGISTER_MUTATION = graphql_tag_1.default(_templateObject);
 var LOGIN_MUTATION = graphql_tag_1.default(_templateObject2);
+exports.GET_CURRENT_USER = graphql_tag_1.default(_templateObject3);
 
 var Login = function (_React$Component) {
     _inherits(Login, _React$Component);
@@ -69565,21 +69726,27 @@ var Login = function (_React$Component) {
             login: true,
             email: '',
             password: '',
-            username: ''
+            username: '',
+            token: '',
+            error: ''
         };
-        _this._confirm = function (data) {
+        _this.updateCacheAfterAuth = function (store, userData) {
             return __awaiter(_this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-                var _ref, token;
+                var _ref, username, token, data, newUser;
 
                 return regeneratorRuntime.wrap(function _callee$(_context) {
                     while (1) {
                         switch (_context.prev = _context.next) {
                             case 0:
-                                _ref = this.state.login ? data.authenticate : data.addUser, token = _ref.token;
+                                _ref = this.state.login ? userData.authenticate : userData.addUser, username = _ref.username, token = _ref.token;
+                                data = store.readQuery({ query: exports.GET_CURRENT_USER });
+                                newUser = {
+                                    currentUser: Object.assign({}, data.currentUser, { username: username, token: token })
+                                };
 
-                                fetch("/set-cookie?token=" + token).then(this.props.history.push('/'));
+                                store.writeQuery({ query: exports.GET_CURRENT_USER, data: newUser });
 
-                            case 2:
+                            case 4:
                             case "end":
                                 return _context.stop();
                         }
@@ -69587,8 +69754,50 @@ var Login = function (_React$Component) {
                 }, _callee, this);
             }));
         };
-        _this._saveUserData = function (token) {
-            localStorage.setItem(constants_1.AUTH_TOKEN, token);
+        _this.confirm = function (data) {
+            return __awaiter(_this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+                var token;
+                return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                    while (1) {
+                        switch (_context2.prev = _context2.next) {
+                            case 0:
+                                token = this.state.login ? data.authenticate.token : data.addUser.token;
+
+                                this.setState({ token: token });
+                                _context2.next = 4;
+                                return fetch("/set-cookie?token=" + token);
+
+                            case 4:
+                                this.props.history.push('/');
+
+                            case 5:
+                            case "end":
+                                return _context2.stop();
+                        }
+                    }
+                }, _callee2, this);
+            }));
+        };
+        _this.handleError = function (err) {
+            return __awaiter(_this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+                return regeneratorRuntime.wrap(function _callee3$(_context3) {
+                    while (1) {
+                        switch (_context3.prev = _context3.next) {
+                            case 0:
+                                if (err.includes('Username or password')) {
+                                    this.setState({ error: 'Username or password is incorrect' });
+                                }
+                                if (err.includes('User with such email')) {
+                                    this.setState({ error: 'User with such email or name already exists' });
+                                }
+
+                            case 2:
+                            case "end":
+                                return _context3.stop();
+                        }
+                    }
+                }, _callee3, this);
+            }));
         };
         return _this;
     }
@@ -69602,16 +69811,23 @@ var Login = function (_React$Component) {
                 login = _state.login,
                 email = _state.email,
                 password = _state.password,
-                username = _state.username;
+                username = _state.username,
+                token = _state.token,
+                error = _state.error;
 
-            return React.createElement("div", { className: styles.wrapper }, React.createElement("div", { className: styles.loginForm }, React.createElement("h4", { className: styles.title }, login ? 'Sign In' : 'Sign Up'), !login && React.createElement("input", { value: username, onChange: function onChange(e) {
+            return React.createElement("div", { className: styles.wrapper }, React.createElement("div", { className: styles.loginForm }, React.createElement("h4", { className: styles.title }, login ? 'Sign In' : 'Sign Up'), React.createElement("div", { className: styles.errorMsg }, error), !login && React.createElement("input", { value: username, onChange: function onChange(e) {
                     return _this2.setState({ username: e.target.value });
                 }, type: 'text', placeholder: 'Name' }), React.createElement("input", { value: email, onChange: function onChange(e) {
                     return _this2.setState({ email: e.target.value });
                 }, type: 'text', placeholder: 'Email' }), React.createElement("input", { value: password, onChange: function onChange(e) {
                     return _this2.setState({ password: e.target.value });
-                }, type: 'password', placeholder: 'Password' })), React.createElement("div", { className: styles.button }, React.createElement(react_apollo_1.Mutation, { mutation: login ? LOGIN_MUTATION : REGISTER_MUTATION, variables: { password: password, username: username, email: email }, onCompleted: function onCompleted(data) {
-                    return _this2._confirm(data);
+                }, type: 'password', placeholder: 'Password' })), React.createElement("div", { className: styles.button }, React.createElement(react_apollo_1.Mutation, { mutation: login ? LOGIN_MUTATION : REGISTER_MUTATION, variables: { password: password, username: username, email: email }, update: function update(cache, _ref2) {
+                    var data = _ref2.data;
+                    return _this2.updateCacheAfterAuth(cache, data);
+                }, onError: function onError(err) {
+                    _this2.handleError(err.message);
+                }, onCompleted: function onCompleted(data) {
+                    return _this2.confirm(data);
                 } }, function (mutation) {
                 return React.createElement("button", { type: 'button', onClick: function onClick() {
                         return mutation();
@@ -69659,32 +69875,63 @@ if(false) {}
 "use strict";
 
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+var react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var react_apollo_1 = __webpack_require__(/*! react-apollo */ "./node_modules/react-apollo/react-apollo.browser.umd.js");
 var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 var queries_1 = __webpack_require__(/*! ../../graphql/movies/queries */ "./src/graphql/movies/queries.ts");
+var Login_1 = __webpack_require__(/*! ../Login */ "./src/components/Login/index.tsx");
+var apollo_1 = __webpack_require__(/*! ../../graphql/apollo */ "./src/graphql/apollo.ts");
 var styles = __webpack_require__(/*! ./styles.css */ "./src/components/UserMovies/styles.css");
-var UserMovies = function UserMovies(_ref) {
-    var userId = _ref.userId;
 
-    var id = userId;
-    return React.createElement(react_apollo_1.Query, { query: queries_1.USER_MOVIES_QUERY, variables: { id: id } }, function (_ref2) {
-        var loading = _ref2.loading,
-            error = _ref2.error,
-            data = _ref2.data,
-            refetch = _ref2.refetch,
-            networkStatus = _ref2.networkStatus;
+var UserMovies = function (_react_1$Component) {
+    _inherits(UserMovies, _react_1$Component);
 
-        if (networkStatus === 4) return "Refetching!";
-        if (loading) return null;
-        if (error) return "Error!: " + error;
-        var add_img = '../../images/add.png';
-        return React.createElement("div", { className: styles.poster_list }, React.createElement(react_router_dom_1.Link, { to: "/add-movie" }, React.createElement("img", { src: add_img })), data.userMovies.map(function (x) {
-            return React.createElement("div", { key: x.title, className: styles.poster }, React.createElement("img", { src: x.posterLink }));
-        }));
-    });
-};
+    function UserMovies() {
+        _classCallCheck(this, UserMovies);
+
+        return _possibleConstructorReturn(this, (UserMovies.__proto__ || Object.getPrototypeOf(UserMovies)).apply(this, arguments));
+    }
+
+    _createClass(UserMovies, [{
+        key: "componentDidUpdate",
+        value: function componentDidUpdate() {
+            console.log('asd');
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var data = apollo_1.default.watchQuery({ query: Login_1.GET_CURRENT_USER }).currentResult();
+            console.log(data);
+            var username = 'test';
+            return React.createElement(react_apollo_1.Query, { query: queries_1.USER_MOVIES_QUERY, variables: { username: username } }, function (_ref) {
+                var loading = _ref.loading,
+                    error = _ref.error,
+                    data = _ref.data,
+                    refetch = _ref.refetch;
+
+                if (loading) return null;
+                if (error) return "Error!: " + error;
+                var add_img = '../../images/add.png';
+                return React.createElement("div", { className: styles.poster_list }, React.createElement(react_router_dom_1.Link, { to: "/add-movie" }, React.createElement("img", { src: add_img })), data.userMovies.map(function (x) {
+                    return React.createElement("div", { key: x.title, className: styles.poster }, React.createElement("img", { src: x.posterLink }));
+                }));
+            });
+        }
+    }]);
+
+    return UserMovies;
+}(react_1.Component);
+
 exports.default = UserMovies;
 
 /***/ }),
@@ -69706,21 +69953,6 @@ var update = __webpack_require__(/*! ../../../node_modules/style-loader/addStyle
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {}
-
-/***/ }),
-
-/***/ "./src/constants.ts":
-/*!**************************!*\
-  !*** ./src/constants.ts ***!
-  \**************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.AUTH_TOKEN = 'auth-token';
 
 /***/ }),
 
@@ -69760,16 +69992,10 @@ exports.default = client;
 "use strict";
 
 
-var _templateObject = _taggedTemplateLiteral(["\n          query userMoviesQuery($id: Int!)\n          {\n              userMovies(id: $id) {\n                title,\n                posterLink\n              }\n          }"], ["\n          query userMoviesQuery($id: Int!)\n          {\n              userMovies(id: $id) {\n                title,\n                posterLink\n              }\n          }"]),
-    _templateObject2 = _taggedTemplateLiteral(["\n          query GetCurrentMovie {\n            movieInput @client {\n              title\n              genres\n              imdb\n            }\n          }"], ["\n          query GetCurrentMovie {\n            movieInput @client {\n              title\n              genres\n              imdb\n            }\n          }"]),
-    _templateObject3 = _taggedTemplateLiteral(["\n            mutation updateCurrentMovie($index: String!, $value: String!) {\n              updateCurrentMovie(index: $index, value: $value) @client\n            }"], ["\n            mutation updateCurrentMovie($index: String!, $value: String!) {\n              updateCurrentMovie(index: $index, value: $value) @client\n            }"]),
-    _templateObject4 = _taggedTemplateLiteral(["\n            mutation addMovie($title: String!, $genres: String!, $imdb: String!) {\n              addMovie(title: $title, genre: $genres, IMDBLink: $imdb)\n            }"], ["\n            mutation addMovie($title: String!, $genres: String!, $imdb: String!) {\n              addMovie(title: $title, genre: $genres, IMDBLink: $imdb)\n            }"]),
-    _templateObject5 = _taggedTemplateLiteral(["\n            query GetUserInput {\n              userInput @client {\n                username\n                password\n                eMail\n              }\n}"], ["\n            query GetUserInput {\n              userInput @client {\n                username\n                password\n                eMail\n              }\n}"]),
-    _templateObject6 = _taggedTemplateLiteral(["\n            mutation updateUserInput($index: String!, $value: String!) {\n              updateUserInput(index: $index, value: $value) @client\n            }"], ["\n            mutation updateUserInput($index: String!, $value: String!) {\n              updateUserInput(index: $index, value: $value) @client\n            }"]),
-    _templateObject7 = _taggedTemplateLiteral(["\n            query GetCurrentUser {\n              currentUser @client {\n                username\n                eMail\n                token\n              }\n            }"], ["\n            query GetCurrentUser {\n              currentUser @client {\n                username\n                eMail\n                token\n              }\n            }"]),
-    _templateObject8 = _taggedTemplateLiteral(["\n            mutation updateLoginInput($index: String!, $value: String!) {\n              updateLoginInput(index: $index, value: $value) @client\n            }"], ["\n            mutation updateLoginInput($index: String!, $value: String!) {\n              updateLoginInput(index: $index, value: $value) @client\n            }"]),
-    _templateObject9 = _taggedTemplateLiteral(["\n            query GetCurrentLogin {\n              loginInput @client {\n                username\n                password\n              }\n            }"], ["\n            query GetCurrentLogin {\n              loginInput @client {\n                username\n                password\n              }\n            }"]),
-    _templateObject10 = _taggedTemplateLiteral(["\n            mutation updateCurrentUser($username: String!, $password: String!) {\n              updateCurrentUser(username: $username, password: $password) @client\n            }"], ["\n            mutation updateCurrentUser($username: String!, $password: String!) {\n              updateCurrentUser(username: $username, password: $password) @client\n            }"]);
+var _templateObject = _taggedTemplateLiteral(["\n  query userMoviesQuery($username: String!)\n  {\n      userMovies(username: $username) {\n        title,\n        posterLink\n      }\n  }\n"], ["\n  query userMoviesQuery($username: String!)\n  {\n      userMovies(username: $username) {\n        title,\n        posterLink\n      }\n  }\n"]),
+    _templateObject2 = _taggedTemplateLiteral(["\n  query GetCurrentMovie {\n    movieInput @client {\n      title\n      genres\n      imdb\n    }\n  }\n"], ["\n  query GetCurrentMovie {\n    movieInput @client {\n      title\n      genres\n      imdb\n    }\n  }\n"]),
+    _templateObject3 = _taggedTemplateLiteral(["\n  mutation updateCurrentMovie($index: String!, $value: String!) {\n    updateCurrentMovie(index: $index, value: $value) @client\n  }\n"], ["\n  mutation updateCurrentMovie($index: String!, $value: String!) {\n    updateCurrentMovie(index: $index, value: $value) @client\n  }\n"]),
+    _templateObject4 = _taggedTemplateLiteral(["\n  mutation addMovie($title: String!, $genres: String!, $imdb: String!) {\n    addMovie(title: $title, genre: $genres, IMDBLink: $imdb)\n  }\n"], ["\n  mutation addMovie($title: String!, $genres: String!, $imdb: String!) {\n    addMovie(title: $title, genre: $genres, IMDBLink: $imdb)\n  }\n"]);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -69779,12 +70005,6 @@ exports.USER_MOVIES_QUERY = graphql_tag_1.default(_templateObject);
 exports.GET_CURRENT_MOVIE = graphql_tag_1.default(_templateObject2);
 exports.UPDATE_CURRENT_MOVIE = graphql_tag_1.default(_templateObject3);
 exports.ADD_MOVIE = graphql_tag_1.default(_templateObject4);
-exports.GET_USER_INPUT = graphql_tag_1.default(_templateObject5);
-exports.UPDATE_USER_INPUT = graphql_tag_1.default(_templateObject6);
-exports.GET_CURRENT_USER = graphql_tag_1.default(_templateObject7);
-exports.UPDATE_LOGIN_INPUT = graphql_tag_1.default(_templateObject8);
-exports.GET_CURRENT_LOGIN = graphql_tag_1.default(_templateObject9);
-exports.UPDATE_CURRENT_USER = graphql_tag_1.default(_templateObject10);
 
 /***/ }),
 
@@ -69799,9 +70019,7 @@ exports.UPDATE_CURRENT_USER = graphql_tag_1.default(_templateObject10);
 
 
 var _templateObject = _taggedTemplateLiteral(["\n          query GetCurrentMovie {\n            movieInput @client {\n              title\n              genres\n              imdb\n            }\n          }"], ["\n          query GetCurrentMovie {\n            movieInput @client {\n              title\n              genres\n              imdb\n            }\n          }"]),
-    _templateObject2 = _taggedTemplateLiteral(["\n        query GetCurrentLogin {\n          loginInput @client {\n            username\n            password\n          }\n        }"], ["\n        query GetCurrentLogin {\n          loginInput @client {\n            username\n            password\n          }\n        }"]),
-    _templateObject3 = _taggedTemplateLiteral(["\n            query Authenticate($username: String!, $password: String!){\n              authenticate(username: $username, password: $password) {\n                username\n                token\n              }\n            }"], ["\n            query Authenticate($username: String!, $password: String!){\n              authenticate(username: $username, password: $password) {\n                username\n                token\n              }\n            }"]),
-    _templateObject4 = _taggedTemplateLiteral(["\n          query GetLoginError {\n            loginError @client {\n              error\n            }\n          }"], ["\n          query GetLoginError {\n            loginError @client {\n              error\n            }\n          }"]);
+    _templateObject2 = _taggedTemplateLiteral(["\n        query getCurrentUser {\n          currentUser @cleint {\n            username\n            token\n          }\n        }"], ["\n        query getCurrentUser {\n          currentUser @cleint {\n            username\n            token\n          }\n        }"]);
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -69809,7 +70027,6 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var graphql_tag_1 = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/src/index.js");
-var queries_1 = __webpack_require__(/*! ./movies/queries */ "./src/graphql/movies/queries.ts");
 exports.defaults = {
     movieInput: {
         __typename: 'Movie',
@@ -69817,26 +70034,10 @@ exports.defaults = {
         genres: '',
         imdb: ''
     },
-    userInput: {
-        __typename: 'User',
-        username: '',
-        password: '',
-        eMail: ''
-    },
     currentUser: {
         __typename: 'CurrentUser',
-        username: null,
-        eMail: null,
-        token: null
-    },
-    loginInput: {
-        __typename: 'Login',
-        username: null,
-        password: null
-    },
-    loginError: {
-        __typename: 'LoginError',
-        error: null
+        username: '',
+        token: ''
     }
 };
 exports.resolvers = {
@@ -69854,53 +70055,20 @@ exports.resolvers = {
             cache.writeQuery({ query: GET_CURRENT_MOVIE, data: newData });
             return null;
         },
-        updateUserInput: function updateUserInput(_, _ref3, _ref4) {
-            var index = _ref3.index,
-                value = _ref3.value;
+        updateCurrentUser: function updateCurrentUser(_, _ref3, _ref4) {
+            var username = _ref3.username,
+                token = _ref3.token;
             var cache = _ref4.cache;
 
-            var previousState = cache.readQuery({ query: queries_1.GET_CURRENT_USER });
+            var GET_CURRENT_USER = graphql_tag_1.default(_templateObject2);
+            var previousState = cache.readQuery({ query: GET_CURRENT_USER });
             var newData = {
-                userInput: Object.assign({}, previousState.userInput, _defineProperty({}, index, value))
+                currentUser: {
+                    username: username,
+                    token: token
+                }
             };
-            cache.writeQuery({ query: queries_1.GET_CURRENT_USER, data: newData });
-            return null;
-        },
-        updateLoginInput: function updateLoginInput(_, _ref5, _ref6) {
-            var index = _ref5.index,
-                value = _ref5.value;
-            var cache = _ref6.cache;
-
-            var GET_CURRENT_LOGIN = graphql_tag_1.default(_templateObject2);
-            var previousState = cache.readQuery({ query: GET_CURRENT_LOGIN });
-            var newData = {
-                loginInput: Object.assign({}, previousState.loginInput, _defineProperty({}, index, value))
-            };
-            cache.writeQuery({ query: GET_CURRENT_LOGIN, data: newData });
-            return null;
-        },
-        updateCurrentUser: function updateCurrentUser(proxy, _ref7, _ref8) {
-            var username = _ref7.username,
-                password = _ref7.password;
-            var cache = _ref8.cache;
-
-            var LOGIN = graphql_tag_1.default(_templateObject3);
-            var login = proxy.readQuery({ query: LOGIN, variables: { username: username, password: password } });
-            if (login === null) {
-                cache.writeQuery({
-                    query: graphql_tag_1.default(_templateObject4),
-                    data: {
-                        loginError: {
-                            error: 'wrong loing data'
-                        }
-                    }
-                });
-            } else {
-                var newData = {
-                    currentUser: Object.assign({}, login)
-                };
-                cache.writeQuery({ query: queries_1.GET_CURRENT_USER, data: newData });
-            }
+            cache.writeQuery({ query: GET_CURRENT_USER, data: newData });
             return null;
         }
     }

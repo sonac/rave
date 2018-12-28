@@ -11,9 +11,9 @@ create table rave.movies (
 
 create table rave.users (
   id serial primary key,
-  username varchar(32),
+  username varchar(32) unique,
   password varchar(256),
-  email varchar(32),
+  email varchar(32) unique,
   created_at timestamp
 );
 
@@ -42,7 +42,7 @@ values ('The Reader', 'drama', 'https://www.imdb.com/title/tt0976051',
         now());
 
 insert into rave.users (username, password, email, created_at)
-values ('user', 'pwd', 'email@email.com', now());
+values ('test', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.cXdl.WrokSmqk6uqFjJrCZnJ8oa5HORTVBCwrYf3UIpjrvuw', 'test@test', now());
 
 insert into rave.user_movies (user_id, movie_id, place, comment, created_at)
 values (1, 1, 'home', 'comment', now());

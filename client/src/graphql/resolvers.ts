@@ -1,6 +1,4 @@
 import gql from "graphql-tag";
-import {  GET_CURRENT_USER } from './movies/queries'
-import client from './apollo'
 
 export const defaults = {
   movieInput: {
@@ -9,26 +7,10 @@ export const defaults = {
     genres: '', 
     imdb: ''
   },
-  userInput: {
-    __typename: 'User',
-    username: '',
-    password: '',
-    eMail: ''
-  },
   currentUser: {
     __typename: 'CurrentUser',
-    username: null,
-    eMail: null,
-    token: null
-  },
-  loginInput: {
-    __typename: 'Login',
-    username: null,
-    password: null
-  },
-  loginError: {
-    __typename: 'LoginError',
-    error: null
+    username: '',
+    token: ''
   }
 };
 
@@ -52,64 +34,21 @@ export const resolvers = {
       cache.writeQuery({ query: GET_CURRENT_MOVIE, data: newData })
       return null;
     },
-    updateUserInput: (_, { index, value }, { cache }) => {
-      const previousState = cache.readQuery({ query: GET_CURRENT_USER })
-      const newData = {
-        userInput: {
-        ...previousState.userInput,
-        [index]: value
-      }}
-      cache.writeQuery({ query: GET_CURRENT_USER, data: newData })
-      return null;
-    },
-    updateLoginInput: (_, { index, value }, { cache }) => {
-      const GET_CURRENT_LOGIN = gql`
-        query GetCurrentLogin {
-          loginInput @client {
+    updateCurrentUser: (_, { username, token }, { cache }) => {
+      const GET_CURRENT_USER = gql`
+        query getCurrentUser {
+          currentUser @cleint {
             username
-            password
+            token
           }
         }`
-      const previousState = cache.readQuery({ query: GET_CURRENT_LOGIN })
+      const previousState = cache.readQuery({ query: GET_CURRENT_USER })
       const newData = {
-        loginInput: {
-        ...previousState.loginInput,
-        [index]: value
-      }}
-      cache.writeQuery({ query: GET_CURRENT_LOGIN, data: newData })
-      return null;
-    },
-    updateCurrentUser: (proxy, { username, password }, { cache }) => {
-      const LOGIN = gql`
-            query Authenticate($username: String!, $password: String!){
-              authenticate(username: $username, password: $password) {
-                username
-                token
-              }
-            }`
-      const login = proxy.readQuery({ query: LOGIN, variables: {username: username, password: password} })
-      if (login === null) {
-        cache.writeQuery({
-          query: gql`
-          query GetLoginError {
-            loginError @client {
-              error
-            }
-          }`,
-          data: {
-            loginError: {
-              error: 'wrong loing data'
-            }
-          }
-        })
-      }
-      else {
-        const newData = {
-          currentUser: {
-          ...login
+        currentUser: {
+          username: username,
+          token: token
         }}
-        cache.writeQuery({ query: GET_CURRENT_USER, data: newData })
-      }
+      cache.writeQuery({ query: GET_CURRENT_USER, data: newData})
       return null;
     }
   },

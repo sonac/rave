@@ -26,9 +26,9 @@ object DBSchema {
 
   class UserTable(tag: Tag) extends Table[User](tag, Some("rave"), "users") {
     def id = column[Int]("id", O.PrimaryKey, O.AutoInc)
-    def username = column[String]("username")
+    def username = column[String]("username", O.Unique)
     def password = column[String]("password")
-    def email = column[String]("email")
+    def email = column[String]("email", O.Unique)
     def createdAt = column[DateTime]("created_at")
     def * = (id, username, password, email, createdAt).mapTo[User]
   }

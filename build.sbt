@@ -8,7 +8,7 @@ lazy val root = (project in file("."))
     inThisBuild(List(
       organization := "sonac",
       version      := "0.1.0",
-      scalaVersion := "2.11.11"
+      scalaVersion := "2.12.7"
     )),
     name := "rave",
     resolvers ++= Seq(

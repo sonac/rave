@@ -52,3 +52,7 @@ button {
     grid-auto-rows: 2fr 4fr 1fr 1fr;
     grid-gap: 5px;
 }
+
+.errorMsg {
+    color: red;
+}

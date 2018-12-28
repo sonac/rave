@@ -37,7 +37,8 @@ object Server extends App with UserAuth {
   def executeGraphQL(query: Document, operationName: Option[String], variables: Json) = {
     complete(Executor.execute(SchemaDefinition.DBSchema, query, new QueryContext,
       variables = if (variables.isNull) Json.obj() else variables,
-      operationName = operationName)
+      operationName = operationName,
+      exceptionHandler = errorHandler)
       .map(OK -> _)
       .recover {
         case error: QueryAnalysisError => BadRequest -> error.resolveError
@@ -151,9 +152,10 @@ object Server extends App with UserAuth {
   } ~
   path("set-cookie") {
     get {
+      println("asd")
       parameter('token.as[String]) { token =>
-        println(token)
         setCookie(HttpCookie(name = "auth-token", value = token)) {
+          println(token)
           getFromFile("public/index.html")
         }
       }

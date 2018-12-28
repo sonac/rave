@@ -27,6 +27,10 @@ html {
     border-radius: 5px;
 }
 
+.logout:hover {
+    cursor: pointer;
+}
+
 .body {
     grid-column: 1 / 4;
     grid-row: 2 / 3;
